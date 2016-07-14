@@ -5,23 +5,16 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 09:05:15 2016 loic frasse-mathon
-// Last update Thu Jul 14 09:35:32 2016 loic frasse-mathon
+// Last update Thu Jul 14 09:57:30 2016 loic frasse-mathon
 //
 
 #ifndef IOPERAND_HH_
 # define IOPERAND_HH_
 
-# include <string>
+class		IOperand;
 
-enum		eOperandType
-  {
-    Int8,
-    Int16,
-    Int32,
-    Float,
-    Double,
-    BigDecimal
-  };
+# include <string>
+# include "Factory.hh"
 
 class		IOperand
 {
