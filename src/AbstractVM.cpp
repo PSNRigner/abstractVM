@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
-// Last update Thu Jul 14 17:07:38 2016 Clément LECOMTE
+// Last update Thu Jul 14 17:12:39 2016 loic frasse-mathon
 //
 
 #include "AbstractVM.hh"
@@ -46,6 +46,21 @@ AbstractVM::~AbstractVM()
 void	AbstractVM::registerInstructions()
 {
   instructions.push_back(new Instruction("push", &AbstractVM::push));
+  instructions.push_back(new Instruction("pop", &AbstractVM::pop));
+  instructions.push_back(new Instruction("dump", &AbstractVM::dump));
+  instructions.push_back(new Instruction("clear", &AbstractVM::clear));
+  instructions.push_back(new Instruction("dup", &AbstractVM::dup));
+  instructions.push_back(new Instruction("swap", &AbstractVM::swap));
+  instructions.push_back(new Instruction("assert", &AbstractVM::assert));
+  instructions.push_back(new Instruction("add", &AbstractVM::add));
+  instructions.push_back(new Instruction("sub", &AbstractVM::sub));
+  instructions.push_back(new Instruction("mul", &AbstractVM::mul));
+  instructions.push_back(new Instruction("div", &AbstractVM::div));
+  instructions.push_back(new Instruction("mod", &AbstractVM::mod));
+  instructions.push_back(new Instruction("load", &AbstractVM::load));
+  instructions.push_back(new Instruction("store", &AbstractVM::store));
+  instructions.push_back(new Instruction("print", &AbstractVM::print));
+  instructions.push_back(new Instruction("exit", &AbstractVM::exit));
 }
 
 void	AbstractVM::push(const Cmd &o)
@@ -136,4 +151,9 @@ void	AbstractVM::exit(const Cmd &o)
   //TODO FREE ALL
   (void)o;
   ::exit(0);
+}
+
+void	AbstractVM::performCommand(const Cmd &o)
+{
+  (void)o;
 }
