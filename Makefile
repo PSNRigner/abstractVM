@@ -5,7 +5,7 @@
 ## Login   <frasse_l@epitech.net>
 ## 
 ## Started on  Thu Jul 14 09:00:22 2016 loic frasse-mathon
-## Last update Thu Jul 14 11:35:26 2016 loic frasse-mathon
+## Last update Thu Jul 14 14:32:06 2016 loic frasse-mathon
 ##
 
 SRC		= src/main.cpp \
@@ -16,7 +16,8 @@ SRC		= src/main.cpp \
 		src/Float.cpp \
 		src/Double.cpp \
 		src/BigDecimal.cpp \
-		src/Exceptions.cpp
+		src/Exceptions.cpp \
+		src/AbstractVM.cpp
 
 OBJ		= $(SRC:.cpp=.o)
 
