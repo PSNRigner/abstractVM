@@ -5,10 +5,10 @@
 // Login   <velly_a@epitech.net>
 // 
 // Started on  14 Jul 14 10:28 AM 2016 adrien velly
-// Last update Thu Jul 14 11:43:37 2016 adrien velly
+// Last update 14 Jul 14 10:28 AM 2016 adrien velly
 //
 
-#include "../../include/cmd.hpp"
+#include "cmd.hpp"
 
 Cmd::Cmd(const std::string &commande)
 {
@@ -43,18 +43,22 @@ std::string Cmd::getValue() const
     int         i = 0;
     std::string tmp;
 
-     while (this->commande[i] != ' ')
-        i++;
-    i++;
-    while (this->commande[i] != '(')
-        i++;
-    i++;
-    while (this->commande[i] != ')')
+    if (this->commande[i].find("(", 0) != std::string::npos)
     {
-        tmp += this->commande[i];
+        while (this->commande[i] != ' ')
+            i++;
         i++;
+        while (this->commande[i] != '(')
+            i++;
+        i++;
+        while (this->commande[i] != ')')
+        {
+            tmp += this->commande[i];
+            i++;
+        }
+        return (tmp);
     }
-    return (tmp);
+    return (NULL);
 }
 
 std::string Cmd::getType() const

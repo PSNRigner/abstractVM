@@ -5,22 +5,32 @@
 // Login   <velly_a@epitech.net>
 // 
 // Started on  14 Jul 14 9:31 AM 2016 adrien velly
-// Last update Thu Jul 14 11:43:16 2016 adrien velly
+// Last update 14 Jul 14 9:31 AM 2016 adrien velly
 //
 
-#include "../../include/parsing.hpp"
+#include "parsing.hpp"
+
+Parsing::Parsing(void)
+{
+    setList_cmd();
+}
 
 Parsing::Parsing(const std::string &file_name)
 {
     std::ifstream               fichier(file_name, std::ios::in);
     std::string                 value;
 
-    while (getline(fichier, value))
-        this->list_cmd.push_back(value);
-    if (this->list_cmd.size() == 0)
-        std::cerr << "File is empty" << std::endl;
+    if (fichier)
+    {
+        while (getline(fichier, value))
+            this->list_cmd.push_back(value);
+        if (this->list_cmd.size() == 0)
+            std::cerr << "File is empty" << std::endl;
+        else
+            make_cmd();
+    }
     else
-        make_cmd();
+        std::cerr << "Can't open file" << std::endl;
 }
 
 Parsing::~Parsing()
@@ -28,6 +38,19 @@ Parsing::~Parsing()
     this->file_name.erase(this->file_name.begin(), this->file_name.end());
     this->list_cmd.erase(this->list_cmd.begin(), this->list_cmd.end());
     this->list_obj.erase(this->list_obj.begin(), this->list_obj.end());
+}
+
+void Parsing::setList_cmd()
+{
+    std::string tmp;
+
+    while(std::cin)
+    {
+        getline(std::cin, tmp);
+        if (tmp == ";;")
+            return;
+        this->list_cmd.push_back(tmp);
+    }
 }
 
 void            Parsing::make_cmd()

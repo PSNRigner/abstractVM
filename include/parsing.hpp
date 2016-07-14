@@ -17,6 +17,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <unistd.h>
 #include "cmd.hpp"
 #include "cmd.hpp"
 
@@ -24,10 +25,12 @@ class                           Parsing
 {
 public:
 
+                                Parsing(void);
                                 Parsing(const std::string &file_name);
                                 ~Parsing(void);
     std::string                 getFile_name(void) const;
     void                        setFile_name(const std::string &file_name);
+    void                        setList_cmd(void);
     void                        make_cmd(void);
     std::vector<Cmd>            getList_obj(void) const;
     std::vector<std::string>    getList_cmd() const;
