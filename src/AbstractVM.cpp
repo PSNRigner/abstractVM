@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
-// Last update Thu Jul 14 16:37:42 2016 Clément LECOMTE
+// Last update Thu Jul 14 17:07:38 2016 Clément LECOMTE
 //
 
 #include "AbstractVM.hh"
@@ -50,8 +50,15 @@ void	AbstractVM::registerInstructions()
 
 void	AbstractVM::push(const Cmd &o)
 {
-  
-  (void)o;
+  size_t	t;
+
+  t = 0;
+  while ((o.getType() != this->tab_str[t]) && (t < this->tab_str.size()))
+    t++;
+  if (t - 1 < this->tab_str.size())
+    this->stack.push_front(Factory::createOperand((eOperandType)t, o.getValue()));
+  else
+    throw new SyntaxException;
 }
 
 void	AbstractVM::pop(const Cmd &o)
@@ -128,5 +135,5 @@ void	AbstractVM::exit(const Cmd &o)
 {
   //TODO FREE ALL
   (void)o;
-  exit(0);
+  ::exit(0);
 }

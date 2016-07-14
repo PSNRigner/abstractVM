@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 09:39:45 2016 loic frasse-mathon
-// Last update Thu Jul 14 15:30:44 2016 loic frasse-mathon
+// Last update Thu Jul 14 17:08:12 2016 Clément LECOMTE
 //
 
 #ifndef ABSTRACTVM_HH_
@@ -20,6 +20,7 @@ class		Instruction;
 # include "IOperand.hh"
 # include "Factory.hh"
 # include "Cmd.hh"
+# include "Exceptions.hh"
 
 class		Instruction
 {
@@ -63,6 +64,7 @@ private:
   std::list<Instruction *>	instructions;
   std::list<IOperand *>		stack;
   std::list<IOperand *>		registry;
+  std::vector<std::string>	tab_str;
 };
 
 #endif /* !ABSTRACTVM_HH_ */
