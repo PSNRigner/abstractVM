@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 09:39:45 2016 loic frasse-mathon
-// Last update Thu Jul 14 09:56:05 2016 loic frasse-mathon
+// Last update Thu Jul 14 10:04:18 2016 loic frasse-mathon
 //
 
 #ifndef ABSTRACTVM_HH_
@@ -25,6 +25,8 @@ class		Instruction
 public:
   Instruction(const std::string &, void (AbstractVM::*)(const std::vector<std::string> &));
   ~Instruction();
+  const std::string	&getName() const;
+  void			(AbstractVM::*&getFunction())(const std::vector<std::string> &);
 private:
   std::string		name;
   void			(AbstractVM::*func)(const std::vector<std::string> &);
@@ -56,7 +58,7 @@ private:
   void		exit(const std::vector<std::string> &);
 
 private:
-  std::vector<Instruction *>	instructions;
+  std::list<Instruction *>	instructions;
   std::list<IOperand *>		stack;
   std::list<IOperand *>		registry;
 };
