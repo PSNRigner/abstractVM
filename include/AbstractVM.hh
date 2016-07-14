@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 09:39:45 2016 loic frasse-mathon
-// Last update Thu Jul 14 17:08:12 2016 Clément LECOMTE
+// Last update Thu Jul 14 22:48:54 2016 loic frasse-mathon
 //
 
 #ifndef ABSTRACTVM_HH_
@@ -61,7 +61,7 @@ private:
   void		exit(const Cmd &);
 
 private:
-  std::list<Instruction *>	instructions;
+  std::vector<Instruction *>	instructions;
   std::list<IOperand *>		stack;
   std::list<IOperand *>		registry;
   std::vector<std::string>	tab_str;

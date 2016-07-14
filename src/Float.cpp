@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 10:51:03 2016 loic frasse-mathon
-// Last update Thu Jul 14 11:31:41 2016 loic frasse-mathon
+// Last update Thu Jul 14 23:14:51 2016 loic frasse-mathon
 //
 
 #include <cstdlib>
@@ -21,7 +21,7 @@ AFloat::AFloat(const std::string &string)
     throw new OverflowException;
   if (n < FLT_MIN)
     throw new UnderflowException;
-  this->data = (char)n;
+  this->data = (float)n;
 }
 
 AFloat::~AFloat()
@@ -33,7 +33,7 @@ std::string		AFloat::toString() const
   std::ostringstream	oss;
   std::string		tmp;
 
-  oss << (int)data;
+  oss << data;
   tmp = oss.str();
   return (tmp);
 }

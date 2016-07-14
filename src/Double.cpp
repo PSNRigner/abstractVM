@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 10:51:03 2016 loic frasse-mathon
-// Last update Thu Jul 14 11:32:16 2016 loic frasse-mathon
+// Last update Thu Jul 14 23:14:58 2016 loic frasse-mathon
 //
 
 #include <cstdlib>
@@ -21,7 +21,7 @@ ADouble::ADouble(const std::string &string)
     throw new OverflowException;
   if (n < DBL_MIN)
     throw new UnderflowException;
-  this->data = (char)n;
+  this->data = (double)n;
 }
 
 ADouble::~ADouble()
@@ -33,7 +33,7 @@ std::string		ADouble::toString() const
   std::ostringstream	oss;
   std::string		tmp;
 
-  oss << (int)data;
+  oss << data;
   tmp = oss.str();
   return (tmp);
 }

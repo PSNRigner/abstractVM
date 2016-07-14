@@ -5,9 +5,10 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
-// Last update Thu Jul 14 17:12:39 2016 loic frasse-mathon
+// Last update Thu Jul 14 23:14:01 2016 loic frasse-mathon
 //
 
+#include <algorithm>
 #include "AbstractVM.hh"
 
 Instruction::Instruction(const std::string &name, void (AbstractVM::*func)(const Cmd &))
@@ -31,12 +32,13 @@ void	(AbstractVM::*&Instruction::getFunction())(const Cmd &)
 
 AbstractVM::AbstractVM()
 {
-  this->tab_str.push_back("Int8");
-  this->tab_str.push_back("Int16");
-  this->tab_str.push_back("Int32");
-  this->tab_str.push_back("Float");
-  this->tab_str.push_back("Double");
-  this->tab_str.push_back("BigDecimal");
+  this->tab_str.push_back("int8");
+  this->tab_str.push_back("int16");
+  this->tab_str.push_back("int32");
+  this->tab_str.push_back("float");
+  this->tab_str.push_back("double");
+  this->tab_str.push_back("bigdecimal");
+  registerInstructions();
 }
 
 AbstractVM::~AbstractVM()
@@ -66,9 +68,12 @@ void	AbstractVM::registerInstructions()
 void	AbstractVM::push(const Cmd &o)
 {
   size_t	t;
+  std::string	tmp;
 
   t = 0;
-  while ((o.getType() != this->tab_str[t]) && (t < this->tab_str.size()))
+  tmp = o.getType();
+  std::transform(tmp.begin(), tmp.end(), tmp.begin(), ::tolower);
+  while ((tmp != this->tab_str[t]) && (t < this->tab_str.size()))
     t++;
   if (t - 1 < this->tab_str.size())
     this->stack.push_front(Factory::createOperand((eOperandType)t, o.getValue()));
@@ -84,6 +89,13 @@ void	AbstractVM::pop(const Cmd &o)
 void	AbstractVM::dump(const Cmd &o)
 {
   (void)o;
+  std::list<IOperand *>::iterator	it = stack.begin();
+  std::list<IOperand *>::iterator	it_end = stack.end();
+  while (it != it_end)
+    {
+      std::cout << (*it)->toString() << std::endl;
+      it++;
+    }
 }
 
 void	AbstractVM::clear(const Cmd &o)
@@ -155,5 +167,20 @@ void	AbstractVM::exit(const Cmd &o)
 
 void	AbstractVM::performCommand(const Cmd &o)
 {
-  (void)o;
+  size_t	t;
+  std::string	tmp;
+
+  t = 0;
+  tmp = o.getCommand();
+  std::transform(tmp.begin(), tmp.end(), tmp.begin(), ::tolower);
+  while (t < instructions.size())
+    {
+      if (instructions[t]->getName() == tmp)
+	{
+	  (this->*(instructions[t]->getFunction()))(o);
+	  return ;
+	}
+      t++;
+    }
+  throw new SyntaxException;
 }

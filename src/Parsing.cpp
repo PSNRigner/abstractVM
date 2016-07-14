@@ -5,7 +5,7 @@
 // Login   <velly_a@epitech.net>
 // 
 // Started on  14 Jul 14 9:31 AM 2016 adrien velly
-// Last update Thu Jul 14 15:29:19 2016 loic frasse-mathon
+// Last update Thu Jul 14 22:57:35 2016 loic frasse-mathon
 //
 
 #include "Parsing.hh"
@@ -44,11 +44,13 @@ void		Parsing::setList_cmd()
 {
   std::string	tmp;
 
-  while (std::cin)
+  while (std::getline(std::cin, tmp))
     {
-      getline(std::cin, tmp);
       if (tmp == ";;")
-	return ;
+	{
+	  make_cmd();
+	  return ;
+	}
       this->list_cmd.push_back(tmp);
     }
   make_cmd();
