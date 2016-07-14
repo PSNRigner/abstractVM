@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 09:39:45 2016 loic frasse-mathon
-// Last update Thu Jul 14 10:04:18 2016 loic frasse-mathon
+// Last update Thu Jul 14 15:30:44 2016 loic frasse-mathon
 //
 
 #ifndef ABSTRACTVM_HH_
@@ -19,17 +19,18 @@ class		Instruction;
 # include <string>
 # include "IOperand.hh"
 # include "Factory.hh"
+# include "Cmd.hh"
 
 class		Instruction
 {
 public:
-  Instruction(const std::string &, void (AbstractVM::*)(const std::vector<std::string> &));
+  Instruction(const std::string &, void (AbstractVM::*)(const Cmd &));
   ~Instruction();
   const std::string	&getName() const;
-  void			(AbstractVM::*&getFunction())(const std::vector<std::string> &);
+  void			(AbstractVM::*&getFunction())(const Cmd &);
 private:
   std::string		name;
-  void			(AbstractVM::*func)(const std::vector<std::string> &);
+  void			(AbstractVM::*func)(const Cmd &);
 };
 
 class		AbstractVM
@@ -37,25 +38,26 @@ class		AbstractVM
 public:
   AbstractVM();
   ~AbstractVM();
+  void		performCommand(const Cmd &);
 
 private:
   void		registerInstructions();
-  void		push(const std::vector<std::string> &);
-  void		pop(const std::vector<std::string> &);
-  void		dump(const std::vector<std::string> &);
-  void		clear(const std::vector<std::string> &);
-  void		dup(const std::vector<std::string> &);
-  void		swap(const std::vector<std::string> &);
-  void		assert(const std::vector<std::string> &);
-  void		add(const std::vector<std::string> &);
-  void		sub(const std::vector<std::string> &);
-  void		mul(const std::vector<std::string> &);
-  void		div(const std::vector<std::string> &);
-  void		mod(const std::vector<std::string> &);
-  void		load(const std::vector<std::string> &);
-  void		store(const std::vector<std::string> &);
-  void		print(const std::vector<std::string> &);
-  void		exit(const std::vector<std::string> &);
+  void		push(const Cmd &);
+  void		pop(const Cmd &);
+  void		dump(const Cmd &);
+  void		clear(const Cmd &);
+  void		dup(const Cmd &);
+  void		swap(const Cmd &);
+  void		assert(const Cmd &);
+  void		add(const Cmd &);
+  void		sub(const Cmd &);
+  void		mul(const Cmd &);
+  void		div(const Cmd &);
+  void		mod(const Cmd &);
+  void		load(const Cmd &);
+  void		store(const Cmd &);
+  void		print(const Cmd &);
+  void		exit(const Cmd &);
 
 private:
   std::list<Instruction *>	instructions;

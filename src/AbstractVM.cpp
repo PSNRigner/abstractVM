@@ -5,12 +5,12 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
-// Last update Thu Jul 14 14:42:54 2016 loic frasse-mathon
+// Last update Thu Jul 14 15:31:47 2016 loic frasse-mathon
 //
 
 #include "AbstractVM.hh"
 
-Instruction::Instruction(const std::string &name, void (AbstractVM::*func)(const std::vector<std::string> &))
+Instruction::Instruction(const std::string &name, void (AbstractVM::*func)(const Cmd &))
   : name(name), func(func)
 {
 }
@@ -24,7 +24,7 @@ const std::string	&Instruction::getName() const
   return (name);
 }
 
-void	(AbstractVM::*&Instruction::getFunction())(const std::vector<std::string> &)
+void	(AbstractVM::*&Instruction::getFunction())(const Cmd &)
 {
   return (func);
 }
@@ -42,7 +42,12 @@ void	AbstractVM::registerInstructions()
   instructions.push_back(new Instruction("push", &AbstractVM::push));
 }
 
-void	AbstractVM::push(const std::vector<std::string> &o)
+void	AbstractVM::push(const Cmd &o)
 {
   (void)o;
+}
+
+void	AbstractVM::performCommand(const Cmd &command)
+{
+  (void)command;
 }
