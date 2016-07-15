@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 15:08:44 2016 loic frasse-mathon
-// Last update Fri Jul 15 14:15:28 2016 loic frasse-mathon
+// Last update Fri Jul 15 19:55:45 2016 loic frasse-mathon
 //
 
 #include "AbstractVM.hh"
@@ -66,7 +66,7 @@ int				main(int ac, char **av)
       else
 	parseFile(vm, av[1]);
     }
-  catch (std::exception *ex)
+  catch (VMException *ex)
     {
       std::cerr << ex->what() << std::endl;
       return (84);
