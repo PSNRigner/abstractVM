@@ -5,7 +5,11 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
+<<<<<<< HEAD
 // Last update Fri Jul 15 10:02:29 2016 adrien velly
+=======
+// Last update Fri Jul 15 09:53:06 2016 Clément LECOMTE
+>>>>>>> refs/remotes/origin/master
 //
 
 #include <algorithm>
@@ -126,16 +130,28 @@ void	AbstractVM::dup(const Cmd &o)
 
 void	AbstractVM::swap(const Cmd &o)
 {
+  if (this->stack.size() < 2)
+    throw new EmptyStackException;
+  IOperand *tmp1 = stack.front();
+  stack.pop_front();
+  IOperand *tmp2 = stack.front();
+  stack.pop_front();
+  stack.push_front(tmp1);
+  stack.push_front(tmp2);
   (void)o;
 }
 
 void	AbstractVM::assert(const Cmd &o)
 {
+  if (this->stack.size() < 1)
+    throw new EmptyStackException;
   (void)o;
 }
 
 void	AbstractVM::add(const Cmd &command)
 {
+  if (this->stack.size() < 2)
+    throw new EmptyStackException;
   (void)command;
 }
 
