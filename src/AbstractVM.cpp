@@ -5,9 +5,13 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
+<<<<<<< HEAD
 // Last update Fri Jul 15 11:14:29 2016 adrien velly
 // Last update Fri Jul 15 09:53:06 2016 Clément LECOMTE
 // Last update Fri Jul 15 10:05:31 2016 Clément LECOMTE
+=======
+// Last update Fri Jul 15 11:04:52 2016 loic frasse-mathon
+>>>>>>> e4db22367e0aefe4b8ca67e0db5800ac26b92284
 //
 
 #include <algorithm>
@@ -85,7 +89,7 @@ void	AbstractVM::push(const Cmd &o)
   std::transform(tmp.begin(), tmp.end(), tmp.begin(), ::tolower);
   while ((tmp != this->tab_str[t]) && (t < this->tab_str.size()))
     t++;
-  if (t - 1 < this->tab_str.size())
+  if (t < this->tab_str.size())
     this->stack.push_front(Factory::createOperand((eOperandType)t, o.getValue()));
   else
     throw new SyntaxException;
@@ -97,7 +101,10 @@ void	AbstractVM::pop(const Cmd &o)
   if (this->stack.size() == 0)
     throw new EmptyStackException;
   else
-    this->stack.erase(this->stack.begin());
+    {
+      delete stack.front();
+      this->stack.erase(this->stack.begin());
+    }
 }
 
 void	AbstractVM::dump(const Cmd &o)
@@ -208,6 +215,8 @@ void	AbstractVM::div(const Cmd &o)
     throw new EmptyStackException;
   IOperand *tmp1 = stack.front();
   stack.pop_front();
+  if (tmp1 == 0)
+    throw new DivByZeroException;
   IOperand *tmp2 = stack.front();
   stack.pop_front();
   IOperand *tmp3;
@@ -224,6 +233,8 @@ void	AbstractVM::mod(const Cmd &o)
     throw new EmptyStackException;
   IOperand *tmp1 = stack.front();
   stack.pop_front();
+  if (tmp1 == 0)
+    throw new DivByZeroException;
   IOperand *tmp2 = stack.front();
   stack.pop_front();
   IOperand *tmp3;
@@ -251,6 +262,12 @@ void	AbstractVM::store(const Cmd &o)
 
 void	AbstractVM::print(const Cmd &o)
 {
+  if (this->stack.size() < 1)
+    throw new EmptyStackException;
+  IOperand *tmp1 = stack.front();
+  if (tmp1->getType() != Int8)
+    throw new AssertException;
+  tmp1->toString();
   (void)o;
 }
 

@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 09:25:19 2016 loic frasse-mathon
-// Last update Thu Jul 14 11:08:32 2016 loic frasse-mathon
+// Last update Fri Jul 15 10:18:26 2016 loic frasse-mathon
 //
 
 #ifndef EXCEPTIONS_HH_
@@ -83,6 +83,14 @@ class		StackOperandException : public std::exception
 public:
   StackOperandException() throw ();
   virtual ~StackOperandException() throw ();
+  virtual const char		*what() const throw ();
+};
+
+class		EmptyRegisterException : public std::exception
+{
+public:
+  EmptyRegisterException() throw ();
+  virtual ~EmptyRegisterException() throw ();
   virtual const char		*what() const throw ();
 };
 
