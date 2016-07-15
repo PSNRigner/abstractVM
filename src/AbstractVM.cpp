@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
-// Last update Fri Jul 15 11:03:47 2016 loic frasse-mathon
+// Last update Fri Jul 15 11:04:52 2016 loic frasse-mathon
 //
 
 #include <algorithm>
@@ -87,7 +87,10 @@ void	AbstractVM::pop(const Cmd &o)
   if (this->stack.size() == 0)
     throw new EmptyStackException;
   else
-    this->stack.erase(this->stack.begin());
+    {
+      delete stack.front();
+      this->stack.erase(this->stack.begin());
+    }
 }
 
 void	AbstractVM::dump(const Cmd &o)
