@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
-// Last update Fri Jul 15 10:05:31 2016 Clément LECOMTE
+// Last update Fri Jul 15 10:20:26 2016 Clément LECOMTE
 //
 
 #include <algorithm>
@@ -194,6 +194,8 @@ void	AbstractVM::div(const Cmd &o)
     throw new EmptyStackException;
   IOperand *tmp1 = stack.front();
   stack.pop_front();
+  if (tmp1 == 0)
+    throw new DivByZeroException;
   IOperand *tmp2 = stack.front();
   stack.pop_front();
   IOperand *tmp3;
@@ -210,6 +212,8 @@ void	AbstractVM::mod(const Cmd &o)
     throw new EmptyStackException;
   IOperand *tmp1 = stack.front();
   stack.pop_front();
+  if (tmp1 == 0)
+    throw new DivByZeroException;
   IOperand *tmp2 = stack.front();
   stack.pop_front();
   IOperand *tmp3;
@@ -232,6 +236,12 @@ void	AbstractVM::store(const Cmd &o)
 
 void	AbstractVM::print(const Cmd &o)
 {
+  if (this->stack.size() < 1)
+    throw new EmptyStackException;
+  IOperand *tmp1 = stack.front();
+  if (tmp1->getType() != Int8)
+    throw new AssertException;
+  tmp1->toString();
   (void)o;
 }
 
