@@ -1,12 +1,12 @@
-; ---------------
-; - example.avm -
-; ---------------
+;---------------
+;- example.avm -
+;---------------
 
 push int32(42)
 push int32(42)
 add
 
-float(44.55)
+push float(44.55)
 mul
 
 push double(42.42)

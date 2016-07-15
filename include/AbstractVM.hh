@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 09:39:45 2016 loic frasse-mathon
-// Last update Fri Jul 15 10:27:15 2016 adrien velly
+// Last update Fri Jul 15 13:45:43 2016 loic frasse-mathon
 //
 
 #ifndef ABSTRACTVM_HH_
@@ -21,6 +21,8 @@ class		Instruction;
 # include "Factory.hh"
 # include "Cmd.hh"
 # include "Exceptions.hh"
+
+# define REG_SIZE	16
 
 class		Instruction
 {
@@ -63,7 +65,7 @@ private:
 private:
   std::vector<Instruction *>	instructions;
   std::list<IOperand *>		stack;
-  IOperand			*registry[16];
+  IOperand			*registry[REG_SIZE];
   std::vector<std::string>	tab_str;
 };
 

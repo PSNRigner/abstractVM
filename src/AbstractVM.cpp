@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
-// Last update Fri Jul 15 11:41:57 2016 loic frasse-mathon
+// Last update Fri Jul 15 13:47:23 2016 loic frasse-mathon
 // Last update Fri Jul 15 09:53:06 2016 Clément LECOMTE
 // Last update Fri Jul 15 10:05:31 2016 Clément LECOMTE
 // Last update Fri Jul 15 11:04:52 2016 loic frasse-mathon
@@ -36,51 +36,64 @@ void	(AbstractVM::*&Instruction::getFunction())(const Cmd &)
 
 AbstractVM::AbstractVM()
 {
-  int			i = 0;
+  size_t		i = 0;
 
-  while (i != 16)
+  while (i < REG_SIZE)
     {
       this->registry[i] = NULL;
       i++;
     }
-  this->tab_str.push_back("Int8");
-  this->tab_str.push_back("Int16");
-  this->tab_str.push_back("Int32");
-  this->tab_str.push_back("Float");
-  this->tab_str.push_back("Double");
-  this->tab_str.push_back("Bigdecimal");
-  registerInstructions();
+  this->tab_str.push_back("int8");
+  this->tab_str.push_back("int16");
+  this->tab_str.push_back("int32");
+  this->tab_str.push_back("float");
+  this->tab_str.push_back("double");
+  this->tab_str.push_back("bigdecimal");
+  this->registerInstructions();
 }
 
 AbstractVM::~AbstractVM()
 {
+  size_t	i;
+
+  i = 0;
   this->tab_str.erase(this->tab_str.begin(), this->tab_str.end());
+  while (i < REG_SIZE)
+    {
+      if (this->registry[i] != NULL)
+	delete this->registry[i];
+      i++;
+    }
   while (!this->stack.empty())
     {
-      delete(this->stack.front());
+      delete this->stack.front();
       this->stack.erase(this->stack.begin());
     }
-  
+  while (!this->instructions.empty())
+    {
+      delete this->instructions.front();
+      this->instructions.erase(this->instructions.begin());
+    }
 }
 
 void	AbstractVM::registerInstructions()
 {
-  instructions.push_back(new Instruction("push", &AbstractVM::push));
-  instructions.push_back(new Instruction("pop", &AbstractVM::pop));
-  instructions.push_back(new Instruction("dump", &AbstractVM::dump));
-  instructions.push_back(new Instruction("clear", &AbstractVM::clear));
-  instructions.push_back(new Instruction("dup", &AbstractVM::dup));
-  instructions.push_back(new Instruction("swap", &AbstractVM::swap));
-  instructions.push_back(new Instruction("assert", &AbstractVM::assert));
-  instructions.push_back(new Instruction("add", &AbstractVM::add));
-  instructions.push_back(new Instruction("sub", &AbstractVM::sub));
-  instructions.push_back(new Instruction("mul", &AbstractVM::mul));
-  instructions.push_back(new Instruction("div", &AbstractVM::div));
-  instructions.push_back(new Instruction("mod", &AbstractVM::mod));
-  instructions.push_back(new Instruction("load", &AbstractVM::load));
-  instructions.push_back(new Instruction("store", &AbstractVM::store));
-  instructions.push_back(new Instruction("print", &AbstractVM::print));
-  instructions.push_back(new Instruction("exit", &AbstractVM::exit));
+  this->instructions.push_back(new Instruction("push", &AbstractVM::push));
+  this->instructions.push_back(new Instruction("pop", &AbstractVM::pop));
+  this->instructions.push_back(new Instruction("dump", &AbstractVM::dump));
+  this->instructions.push_back(new Instruction("clear", &AbstractVM::clear));
+  this->instructions.push_back(new Instruction("dup", &AbstractVM::dup));
+  this->instructions.push_back(new Instruction("swap", &AbstractVM::swap));
+  this->instructions.push_back(new Instruction("assert", &AbstractVM::assert));
+  this->instructions.push_back(new Instruction("add", &AbstractVM::add));
+  this->instructions.push_back(new Instruction("sub", &AbstractVM::sub));
+  this->instructions.push_back(new Instruction("mul", &AbstractVM::mul));
+  this->instructions.push_back(new Instruction("div", &AbstractVM::div));
+  this->instructions.push_back(new Instruction("mod", &AbstractVM::mod));
+  this->instructions.push_back(new Instruction("load", &AbstractVM::load));
+  this->instructions.push_back(new Instruction("store", &AbstractVM::store));
+  this->instructions.push_back(new Instruction("print", &AbstractVM::print));
+  this->instructions.push_back(new Instruction("exit", &AbstractVM::exit));
 }
 
 void	AbstractVM::push(const Cmd &o)
@@ -252,6 +265,8 @@ void	AbstractVM::load(const Cmd &o)
 
   const char * c = o.getV().c_str();
   i = atoi(c);
+  if (i < 0 || i >= REG_SIZE)
+    throw new SyntaxException;
   if (this->registry[i] == NULL)
     throw new EmptyRegistryException;
   else
@@ -264,6 +279,8 @@ void	AbstractVM::store(const Cmd &o)
 
   const char * c = o.getV().c_str();
   i = atoi(c);
+  if (i < 0 || i >= REG_SIZE)
+    throw new SyntaxException;
   if (this->registry[i] != NULL)
     delete this->registry[i];
   this->registry[i] = this->stack.front();
@@ -296,6 +313,10 @@ void	AbstractVM::performCommand(const Cmd &o)
   t = 0;
   tmp = o.getCommand();
   std::transform(tmp.begin(), tmp.end(), tmp.begin(), ::tolower);
+  if (tmp.find(';') != std::string::npos)
+    tmp = tmp.substr(0, tmp.find(';'));
+  if (tmp.empty())
+    return ;
   while (t < instructions.size())
     {
       if (instructions[t]->getName() == tmp)
