@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 10:51:03 2016 loic frasse-mathon
-// Last update Fri Jul 15 11:18:54 2016 loic frasse-mathon
+// Last update Fri Jul 15 13:54:18 2016 loic frasse-mathon
 //
 
 #include <cstdlib>
@@ -98,7 +98,7 @@ IOperand	*Int32::operator%(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op % *this);
-  long	value = (int)atoi(op.toString().c_str()) + this->data;
+  long	value = (int)atoi(op.toString().c_str()) % this->data;
   std::ostringstream	oss;
   std::string		tmp;
 
