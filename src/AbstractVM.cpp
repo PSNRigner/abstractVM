@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
-// Last update Fri Jul 15 10:24:33 2016 Clément LECOMTE
+// Last update Fri Jul 15 11:03:47 2016 loic frasse-mathon
 //
 
 #include <algorithm>
@@ -75,7 +75,7 @@ void	AbstractVM::push(const Cmd &o)
   std::transform(tmp.begin(), tmp.end(), tmp.begin(), ::tolower);
   while ((tmp != this->tab_str[t]) && (t < this->tab_str.size()))
     t++;
-  if (t - 1 < this->tab_str.size())
+  if (t < this->tab_str.size())
     this->stack.push_front(Factory::createOperand((eOperandType)t, o.getValue()));
   else
     throw new SyntaxException;
