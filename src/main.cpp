@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 15:08:44 2016 loic frasse-mathon
-// Last update Fri Jul 15 10:15:23 2016 loic frasse-mathon
+// Last update Fri Jul 15 14:15:28 2016 loic frasse-mathon
 //
 
 #include "AbstractVM.hh"
@@ -34,6 +34,7 @@ void				parse(AbstractVM &vm)
       vm.performCommand(list[i]);
       i++;
     }
+  throw new NoExitException;
 }
 
 void				parseFile(AbstractVM &vm, const std::string &path)
@@ -49,6 +50,7 @@ void				parseFile(AbstractVM &vm, const std::string &path)
       vm.performCommand(list[i]);
       i++;
     }
+  throw new NoExitException;
 }
 
 int				main(int ac, char **av)
