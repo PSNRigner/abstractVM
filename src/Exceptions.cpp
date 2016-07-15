@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 11:08:58 2016 loic frasse-mathon
-// Last update Fri Jul 15 11:26:51 2016 loic frasse-mathon
+// Last update Fri Jul 15 14:13:51 2016 loic frasse-mathon
 //
 
 #include "Exceptions.hh"
@@ -138,4 +138,17 @@ EmptyRegistryException::~EmptyRegistryException() throw ()
 const char	*EmptyRegistryException::what() const throw ()
 {
   return "/!\\ Empty register slot /!\\";
+}
+
+NotYetSupportedException::NotYetSupportedException() throw ()
+{
+}
+
+NotYetSupportedException::~NotYetSupportedException() throw ()
+{
+}
+
+const char	*NotYetSupportedException::what() const throw ()
+{
+  return "/!\\ Not Yet Supported /!\\";
 }

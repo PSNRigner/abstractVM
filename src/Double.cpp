@@ -5,12 +5,13 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 10:51:03 2016 loic frasse-mathon
-// Last update Fri Jul 15 11:19:31 2016 loic frasse-mathon
+// Last update Fri Jul 15 13:55:47 2016 loic frasse-mathon
 //
 
 #include <cstdlib>
 #include <sstream>
 #include <cfloat>
+#include <cmath>
 #include "Double.hh"
 #include "Exceptions.hh"
 
@@ -99,7 +100,7 @@ IOperand	*Double::operator%(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op % *this);
-  double	value = (double)atof(op.toString().c_str()) + this->data;
+  double	value = fmod(atof(op.toString().c_str()), this->data);
   std::ostringstream	oss;
   std::string		tmp;
 

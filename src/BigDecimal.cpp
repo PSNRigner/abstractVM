@@ -5,10 +5,11 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 11:32:42 2016 loic frasse-mathon
-// Last update Fri Jul 15 11:20:36 2016 loic frasse-mathon
+// Last update Fri Jul 15 14:13:28 2016 loic frasse-mathon
 //
 
 #include "BigDecimal.hh"
+#include "Exceptions.hh"
 
 BigDecimal::BigDecimal(const std::string &value)
 {
@@ -22,35 +23,35 @@ BigDecimal::~BigDecimal()
 IOperand	*BigDecimal::operator+(const IOperand &op) const
 {
   (void)op;
-  return (NULL);
+  throw new NotYetSupportedException;
   /* TODO */
 }
 
 IOperand	*BigDecimal::operator-(const IOperand &op) const
 {
   (void)op;
-  return (NULL);
+  throw new NotYetSupportedException;
   /* TODO */
 }
 
 IOperand	*BigDecimal::operator*(const IOperand &op) const
 {
   (void)op;
-  return (NULL);
+  throw new NotYetSupportedException;
   /* TODO */
 }
 
 IOperand	*BigDecimal::operator/(const IOperand &op) const
 {
   (void)op;
-  return (NULL);
+  throw new NotYetSupportedException;
   /* TODO */
 }
 
 IOperand	*BigDecimal::operator%(const IOperand &op) const
 {
   (void)op;
-  return (NULL);
+  throw new NotYetSupportedException;
   /* TODO */
 }
 
