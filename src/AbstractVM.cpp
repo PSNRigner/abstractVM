@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
-// Last update Fri Jul 15 11:37:10 2016 adrien velly
+// Last update Fri Jul 15 11:41:57 2016 loic frasse-mathon
 // Last update Fri Jul 15 09:53:06 2016 Clément LECOMTE
 // Last update Fri Jul 15 10:05:31 2016 Clément LECOMTE
 // Last update Fri Jul 15 11:04:52 2016 loic frasse-mathon
@@ -165,7 +165,7 @@ void	AbstractVM::assert(const Cmd &o)
 void	AbstractVM::add(const Cmd &command)
 {
   if (this->stack.size() < 2)
-    throw new EmptyStackException;
+    throw new StackOperandException;
   IOperand *tmp1 = stack.front();
   stack.pop_front();
   IOperand *tmp2 = stack.front();
@@ -181,7 +181,7 @@ void	AbstractVM::add(const Cmd &command)
 void	AbstractVM::sub(const Cmd &o)
 {
   if (this->stack.size() < 2)
-    throw new EmptyStackException;
+    throw new StackOperandException;
   IOperand *tmp1 = stack.front();
   stack.pop_front();
   IOperand *tmp2 = stack.front();
@@ -197,7 +197,7 @@ void	AbstractVM::sub(const Cmd &o)
 void	AbstractVM::mul(const Cmd &o)
 {
   if (this->stack.size() < 2)
-    throw new EmptyStackException;
+    throw new StackOperandException;
   IOperand *tmp1 = stack.front();
   stack.pop_front();
   IOperand *tmp2 = stack.front();
@@ -213,7 +213,7 @@ void	AbstractVM::mul(const Cmd &o)
 void	AbstractVM::div(const Cmd &o)
 {
  if (this->stack.size() < 2)
-    throw new EmptyStackException;
+    throw new StackOperandException;
   IOperand *tmp1 = stack.front();
   stack.pop_front();
   if (tmp1 == 0)
@@ -231,7 +231,7 @@ void	AbstractVM::div(const Cmd &o)
 void	AbstractVM::mod(const Cmd &o)
 {
   if (this->stack.size() < 2)
-    throw new EmptyStackException;
+    throw new StackOperandException;
   IOperand *tmp1 = stack.front();
   stack.pop_front();
   if (tmp1 == 0)
@@ -255,7 +255,7 @@ void	AbstractVM::load(const Cmd &o)
   if (this->registry[i] == NULL)
     throw new EmptyRegistryException;
   else
-    this->stack.push_back(this->registry[i]);
+    this->stack.push_back(Factory::createOperand(this->registry[i]->getType(), this->registry[i]->toString()));
 }
 
 void	AbstractVM::store(const Cmd &o)
@@ -264,6 +264,8 @@ void	AbstractVM::store(const Cmd &o)
 
   const char * c = o.getV().c_str();
   i = atoi(c);
+  if (this->registry[i] != NULL)
+    delete this->registry[i];
   this->registry[i] = this->stack.front();
 }
 
