@@ -5,14 +5,11 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
-<<<<<<< HEAD
-// Last update Fri Jul 15 11:28:20 2016 adrien velly
+// Last update Fri Jul 15 11:30:52 2016 adrien velly
 // Last update Fri Jul 15 09:53:06 2016 Clément LECOMTE
 // Last update Fri Jul 15 10:05:31 2016 Clément LECOMTE
 // Last update Fri Jul 15 11:04:52 2016 loic frasse-mathon
-=======
 // Last update Fri Jul 15 11:24:53 2016 loic frasse-mathon
->>>>>>> 8d515da8cfc43b38039cfd0e5ecd3360b017c1cb
 //
 
 #include <algorithm>
@@ -248,7 +245,8 @@ void	AbstractVM::load(const Cmd &o)
 
   const char * c = o.getV().c_str();
   i = atoi(c);
-  if (this->registry[i] == NULL);
+  if (this->registry[i] == NULL)
+    throw new EmptyRegistryException;
   else
     this->stack.push_back(this->registry[i]);
 }
