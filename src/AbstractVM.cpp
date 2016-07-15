@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
-// Last update Fri Jul 15 10:05:08 2016 Clément LECOMTE
+// Last update Fri Jul 15 10:05:31 2016 Clément LECOMTE
 //
 
 #include <algorithm>
@@ -206,6 +206,17 @@ void	AbstractVM::div(const Cmd &o)
 
 void	AbstractVM::mod(const Cmd &o)
 {
+ if (this->stack.size() < 2)
+    throw new EmptyStackException;
+  IOperand *tmp1 = stack.front();
+  stack.pop_front();
+  IOperand *tmp2 = stack.front();
+  stack.pop_front();
+  IOperand *tmp3;
+  tmp3 = *tmp2 % *tmp1;
+  stack.push_front(tmp3);
+  delete tmp1;
+  delete tmp2;
   (void)o;
 }
 
