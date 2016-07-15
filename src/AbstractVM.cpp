@@ -5,11 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
-// Last update Fri Jul 15 11:30:52 2016 adrien velly
-// Last update Fri Jul 15 09:53:06 2016 Clément LECOMTE
-// Last update Fri Jul 15 10:05:31 2016 Clément LECOMTE
-// Last update Fri Jul 15 11:04:52 2016 loic frasse-mathon
-// Last update Fri Jul 15 11:24:53 2016 loic frasse-mathon
+// Last update Fri Jul 15 14:32:28 2016 Clément LECOMTE
 //
 
 #include <algorithm>
@@ -150,9 +146,24 @@ void	AbstractVM::swap(const Cmd &o)
 
 void	AbstractVM::assert(const Cmd &o)
 {
-  if (this->stack.size() < 1)
-    throw new EmptyStackException;
-  (void)o;
+  size_t	t;
+  std::string	tmp;
+  if (this->stack.size() < 2)
+    throw new EmptyStackException; 
+  IOperand *tmp1 = stack.front();
+  IOperand *tmp2;
+
+  t = 0;
+  tmp = o.getType();
+  std::transform(tmp.begin(), tmp.end(), tmp.begin(), ::tolower);
+  while ((tmp != this->tab_str[t]) && (t < this->tab_str.size()))
+    t++;
+  if (t < this->tab_str.size())
+    tmp2 = Factory::createOperand((eOperandType::eOperandType)t, o.getValue());
+  else
+    throw new SyntaxException;
+  if (tmp1->toString() != tmp2->toString())
+    throw new AssertException;
 }
 
 void	AbstractVM::add(const Cmd &command)
