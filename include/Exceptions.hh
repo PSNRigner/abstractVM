@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 09:25:19 2016 loic frasse-mathon
-// Last update Fri Jul 15 14:42:07 2016 loic frasse-mathon
+// Last update Fri Jul 15 16:32:49 2016 loic frasse-mathon
 //
 
 #ifndef EXCEPTIONS_HH_
@@ -43,7 +43,7 @@ class		OverflowException : public VMException
 {
 public:
   OverflowException() throw ();
-  virtual ~OverflowException() throw ();;
+  virtual ~OverflowException() throw ();
 };
 
 class		UnderflowException : public VMException
