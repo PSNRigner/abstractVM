@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 10:06:04 2016 loic frasse-mathon
-// Last update Thu Jul 14 10:46:29 2016 loic frasse-mathon
+// Last update Fri Jul 15 11:11:53 2016 loic frasse-mathon
 //
 
 #include "Factory.hh"
@@ -32,7 +32,7 @@ Factory::~Factory()
 {
 }
 
-IOperand	*Factory::createOperand(eOperandType type, const std::string &value)
+IOperand	*Factory::createOperand(eOperandType::eOperandType type, const std::string &value)
 {
   Factory	&factory = Factory::instance;
   if (type < 0 || type >= factory.methods.size())
@@ -42,30 +42,30 @@ IOperand	*Factory::createOperand(eOperandType type, const std::string &value)
 
 IOperand	*Factory::createInt8(const std::string &value)
 {
-  return (new AInt8(value));
+  return (new Int8(value));
 }
 
 IOperand	*Factory::createInt16(const std::string &value)
 {
-  return (new AInt16(value));
+  return (new Int16(value));
 }
 
 IOperand	*Factory::createInt32(const std::string &value)
 {
-  return (new AInt32(value));
+  return (new Int32(value));
 }
 
 IOperand	*Factory::createFloat(const std::string &value)
 {
-  return (new AFloat(value));
+  return (new Float(value));
 }
 
 IOperand	*Factory::createDouble(const std::string &value)
 {
-  return (new ADouble(value));
+  return (new Double(value));
 }
 
 IOperand	*Factory::createBigDecimal(const std::string &value)
 {
-  return (new ABigDecimal(value));
+  return (new BigDecimal(value));
 }

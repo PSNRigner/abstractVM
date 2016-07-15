@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 10:51:03 2016 loic frasse-mathon
-// Last update Thu Jul 14 23:14:58 2016 loic frasse-mathon
+// Last update Fri Jul 15 11:19:31 2016 loic frasse-mathon
 //
 
 #include <cstdlib>
@@ -14,7 +14,7 @@
 #include "Double.hh"
 #include "Exceptions.hh"
 
-ADouble::ADouble(const std::string &string)
+Double::Double(const std::string &string)
 {
   __float128	n = atof(string.c_str());
   if (n > DBL_MAX)
@@ -24,11 +24,11 @@ ADouble::ADouble(const std::string &string)
   this->data = (double)n;
 }
 
-ADouble::~ADouble()
+Double::~Double()
 {
 }
 
-std::string		ADouble::toString() const
+std::string		Double::toString() const
 {
   std::ostringstream	oss;
   std::string		tmp;
@@ -38,12 +38,12 @@ std::string		ADouble::toString() const
   return (tmp);
 }
 
-eOperandType	ADouble::getType() const
+eOperandType::eOperandType	Double::getType() const
 {
-  return (Double);
+  return (eOperandType::Double);
 }
 
-IOperand	*ADouble::operator+(const IOperand &op) const
+IOperand	*Double::operator+(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op + *this);
@@ -53,10 +53,10 @@ IOperand	*ADouble::operator+(const IOperand &op) const
 
   oss << value;
   tmp = oss.str();
-  return (new ADouble(tmp));
+  return (new Double(tmp));
 }
 
-IOperand	*ADouble::operator-(const IOperand &op) const
+IOperand	*Double::operator-(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op - *this);
@@ -66,10 +66,10 @@ IOperand	*ADouble::operator-(const IOperand &op) const
 
   oss << value;
   tmp = oss.str();
-  return (new ADouble(tmp));
+  return (new Double(tmp));
 }
 
-IOperand	*ADouble::operator*(const IOperand &op) const
+IOperand	*Double::operator*(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op * *this);
@@ -79,10 +79,10 @@ IOperand	*ADouble::operator*(const IOperand &op) const
 
   oss << value;
   tmp = oss.str();
-  return (new ADouble(tmp));
+  return (new Double(tmp));
 }
 
-IOperand	*ADouble::operator/(const IOperand &op) const
+IOperand	*Double::operator/(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op / *this);
@@ -92,10 +92,10 @@ IOperand	*ADouble::operator/(const IOperand &op) const
 
   oss << value;
   tmp = oss.str();
-  return (new ADouble(tmp));
+  return (new Double(tmp));
 }
 
-IOperand	*ADouble::operator%(const IOperand &op) const
+IOperand	*Double::operator%(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op % *this);
@@ -105,5 +105,5 @@ IOperand	*ADouble::operator%(const IOperand &op) const
 
   oss << value;
   tmp = oss.str();
-  return (new ADouble(tmp));
+  return (new Double(tmp));
 }

@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 10:27:07 2016 loic frasse-mathon
-// Last update Thu Jul 14 10:44:31 2016 loic frasse-mathon
+// Last update Fri Jul 15 11:17:05 2016 loic frasse-mathon
 //
 
 #ifndef DOUBLE_HH_
@@ -13,18 +13,18 @@
 
 # include "IOperand.hh"
 
-class		ADouble : public IOperand
+class		Double : public IOperand
 {
 public:
-  ADouble(const std::string &);
-  virtual ~ADouble();
-  virtual std::string	toString() const;
-  virtual eOperandType	getType() const;
-  virtual IOperand	*operator+(const IOperand &) const;
-  virtual IOperand	*operator-(const IOperand &) const;
-  virtual IOperand	*operator*(const IOperand &) const;
-  virtual IOperand	*operator/(const IOperand &) const;
-  virtual IOperand	*operator%(const IOperand &) const;
+  Double(const std::string &);
+  virtual ~Double();
+  virtual std::string			toString() const;
+  virtual eOperandType::eOperandType	getType() const;
+  virtual IOperand			*operator+(const IOperand &) const;
+  virtual IOperand			*operator-(const IOperand &) const;
+  virtual IOperand			*operator*(const IOperand &) const;
+  virtual IOperand			*operator/(const IOperand &) const;
+  virtual IOperand			*operator%(const IOperand &) const;
 
 private:
   double		data;

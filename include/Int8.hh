@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 10:27:07 2016 loic frasse-mathon
-// Last update Thu Jul 14 10:54:30 2016 loic frasse-mathon
+// Last update Fri Jul 15 11:15:33 2016 loic frasse-mathon
 //
 
 #ifndef INT8_HH_
@@ -13,18 +13,18 @@
 
 # include "IOperand.hh"
 
-class		AInt8 : public IOperand
+class		Int8 : public IOperand
 {
 public:
-  AInt8(const std::string &);
-  virtual ~AInt8();
-  virtual std::string	toString() const;
-  virtual eOperandType	getType() const;
-  virtual IOperand	*operator+(const IOperand &) const;
-  virtual IOperand	*operator-(const IOperand &) const;
-  virtual IOperand	*operator*(const IOperand &) const;
-  virtual IOperand	*operator/(const IOperand &) const;
-  virtual IOperand	*operator%(const IOperand &) const;
+  Int8(const std::string &);
+  virtual ~Int8();
+  virtual std::string			toString() const;
+  virtual eOperandType::eOperandType	getType() const;
+  virtual IOperand			*operator+(const IOperand &) const;
+  virtual IOperand			*operator-(const IOperand &) const;
+  virtual IOperand			*operator*(const IOperand &) const;
+  virtual IOperand			*operator/(const IOperand &) const;
+  virtual IOperand			*operator%(const IOperand &) const;
 
 private:
   char			data;

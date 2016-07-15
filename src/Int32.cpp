@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 10:51:03 2016 loic frasse-mathon
-// Last update Thu Jul 14 11:30:59 2016 loic frasse-mathon
+// Last update Fri Jul 15 11:18:54 2016 loic frasse-mathon
 //
 
 #include <cstdlib>
@@ -13,7 +13,7 @@
 #include "Int32.hh"
 #include "Exceptions.hh"
 
-AInt32::AInt32(const std::string &string)
+Int32::Int32(const std::string &string)
 {
   __int128	n = atol(string.c_str());
   if (n > 2147483647)
@@ -23,11 +23,11 @@ AInt32::AInt32(const std::string &string)
   this->data = (int)n;
 }
 
-AInt32::~AInt32()
+Int32::~Int32()
 {
 }
 
-std::string		AInt32::toString() const
+std::string		Int32::toString() const
 {
   std::ostringstream	oss;
   std::string		tmp;
@@ -37,12 +37,12 @@ std::string		AInt32::toString() const
   return (tmp);
 }
 
-eOperandType	AInt32::getType() const
+eOperandType::eOperandType	Int32::getType() const
 {
-  return (Int32);
+  return (eOperandType::Int32);
 }
 
-IOperand	*AInt32::operator+(const IOperand &op) const
+IOperand	*Int32::operator+(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op + *this);
@@ -52,10 +52,10 @@ IOperand	*AInt32::operator+(const IOperand &op) const
 
   oss << value;
   tmp = oss.str();
-  return (new AInt32(tmp));
+  return (new Int32(tmp));
 }
 
-IOperand	*AInt32::operator-(const IOperand &op) const
+IOperand	*Int32::operator-(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op - *this);
@@ -65,10 +65,10 @@ IOperand	*AInt32::operator-(const IOperand &op) const
 
   oss << value;
   tmp = oss.str();
-  return (new AInt32(tmp));
+  return (new Int32(tmp));
 }
 
-IOperand	*AInt32::operator*(const IOperand &op) const
+IOperand	*Int32::operator*(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op * *this);
@@ -78,10 +78,10 @@ IOperand	*AInt32::operator*(const IOperand &op) const
 
   oss << value;
   tmp = oss.str();
-  return (new AInt32(tmp));
+  return (new Int32(tmp));
 }
 
-IOperand	*AInt32::operator/(const IOperand &op) const
+IOperand	*Int32::operator/(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op / *this);
@@ -91,10 +91,10 @@ IOperand	*AInt32::operator/(const IOperand &op) const
 
   oss << value;
   tmp = oss.str();
-  return (new AInt32(tmp));
+  return (new Int32(tmp));
 }
 
-IOperand	*AInt32::operator%(const IOperand &op) const
+IOperand	*Int32::operator%(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op % *this);
@@ -104,5 +104,5 @@ IOperand	*AInt32::operator%(const IOperand &op) const
 
   oss << value;
   tmp = oss.str();
-  return (new AInt32(tmp));
+  return (new Int32(tmp));
 }
