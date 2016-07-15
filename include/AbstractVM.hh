@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 09:39:45 2016 loic frasse-mathon
-// Last update Thu Jul 14 22:48:54 2016 loic frasse-mathon
+// Last update Fri Jul 15 10:27:15 2016 adrien velly
 //
 
 #ifndef ABSTRACTVM_HH_
@@ -63,7 +63,7 @@ private:
 private:
   std::vector<Instruction *>	instructions;
   std::list<IOperand *>		stack;
-  std::list<IOperand *>		registry;
+  IOperand			*registry[16];
   std::vector<std::string>	tab_str;
 };
 

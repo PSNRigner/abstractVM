@@ -5,15 +5,9 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
-<<<<<<< HEAD
-<<<<<<< HEAD
-// Last update Fri Jul 15 10:02:29 2016 adrien velly
-=======
+// Last update Fri Jul 15 11:14:29 2016 adrien velly
 // Last update Fri Jul 15 09:53:06 2016 Clément LECOMTE
->>>>>>> refs/remotes/origin/master
-=======
 // Last update Fri Jul 15 10:05:31 2016 Clément LECOMTE
->>>>>>> 749d867319e49e872df714a47f37bc1f0f1ff933
 //
 
 #include <algorithm>
@@ -40,12 +34,20 @@ void	(AbstractVM::*&Instruction::getFunction())(const Cmd &)
 
 AbstractVM::AbstractVM()
 {
-  this->tab_str.push_back("int8");
-  this->tab_str.push_back("int16");
-  this->tab_str.push_back("int32");
-  this->tab_str.push_back("float");
-  this->tab_str.push_back("double");
-  this->tab_str.push_back("bigdecimal");
+  int			i = 0;
+
+  while (i != 16)
+    {
+      this->registry[i] = NULL;
+      i++;
+    }
+  this->tab_str.push_back("Int8");
+  this->tab_str.push_back("Int16");
+  this->tab_str.push_back("Int32");
+  this->tab_str.push_back("Float");
+  this->tab_str.push_back("Double");
+  this->tab_str.push_back("Bigdecimal");
+  
   registerInstructions();
 }
 
@@ -240,6 +242,11 @@ void	AbstractVM::load(const Cmd &o)
 void	AbstractVM::store(const Cmd &o)
 {
   (void)o;
+  int	i;
+
+  const char * c = o.getV().c_str();
+  i = atoi(c);
+  this->registry[i] = this->stack.front();
 }
 
 void	AbstractVM::print(const Cmd &o)
