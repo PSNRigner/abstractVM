@@ -5,11 +5,11 @@
 // Login   <velly_a@epitech.net>
 // 
 // Started on  14 Jul 14 9:30 AM 2016 adrien velly
-// Last update Thu Jul 14 15:09:38 2016 loic frasse-mathon
+// Last update Fri Jul 15 16:31:45 2016 loic frasse-mathon
 //
 
-#ifndef PARSING
-# define PARSING
+#ifndef PARSING_HH_
+# define PARSING_HH_
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -40,4 +40,4 @@ private:
 };
 
 
-#endif //PARSING
+#endif /* !PARSING_HH_ */
