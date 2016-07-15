@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 11:32:42 2016 loic frasse-mathon
-// Last update Fri Jul 15 14:13:28 2016 loic frasse-mathon
+// Last update Fri Jul 15 14:27:59 2016 loic frasse-mathon
 //
 
 #include "BigDecimal.hh"
@@ -22,7 +22,11 @@ BigDecimal::~BigDecimal()
 
 IOperand	*BigDecimal::operator+(const IOperand &op) const
 {
-  (void)op;
+  std::string	tmp1;
+  std::string	tmp2;
+
+  tmp1 = this->data;
+  tmp2 = op.toString();
   throw new NotYetSupportedException;
   /* TODO */
 }

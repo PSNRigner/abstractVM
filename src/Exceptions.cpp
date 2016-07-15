@@ -5,12 +5,27 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 11:08:58 2016 loic frasse-mathon
-// Last update Fri Jul 15 14:13:51 2016 loic frasse-mathon
+// Last update Fri Jul 15 14:40:24 2016 loic frasse-mathon
 //
 
 #include "Exceptions.hh"
 
+VMException::VMException(const char *str) throw ()
+  : str(str)
+{
+}
+
+VMException::~VMException() throw ()
+{
+}
+
+const char	*VMException::what() const throw ()
+{
+  return (this->str);
+}
+
 SyntaxException::SyntaxException() throw ()
+  : VMException("/!\\ Syntax Error /!\\")
 {
 }
 
@@ -18,12 +33,8 @@ SyntaxException::~SyntaxException() throw ()
 {
 }
 
-const char	*SyntaxException::what() const throw ()
-{
-  return "/!\\ Syntax Error /!\\";
-}
-
 UnknownInstructionException::UnknownInstructionException() throw ()
+  : VMException("/!\\ Unknown Instruction /!\\")
 {
 }
 
@@ -31,12 +42,8 @@ UnknownInstructionException::~UnknownInstructionException() throw ()
 {
 }
 
-const char	*UnknownInstructionException::what() const throw ()
-{
-  return "/!\\ Unknown Instruction /!\\";
-}
-
 OverflowException::OverflowException() throw ()
+  : VMException("/!\\ Overflow Exception /!\\")
 {
 }
 
@@ -44,12 +51,8 @@ OverflowException::~OverflowException() throw ()
 {
 }
 
-const char	*OverflowException::what() const throw ()
-{
-  return "/!\\ Overflow Exception /!\\";
-}
-
 UnderflowException::UnderflowException() throw ()
+  : VMException("/!\\ Overflow Exception /!\\")
 {
 }
 
@@ -57,12 +60,8 @@ UnderflowException::~UnderflowException() throw ()
 {
 }
 
-const char	*UnderflowException::what() const throw ()
-{
-  return "/!\\ Underflow Exception /!\\";
-}
-
 EmptyStackException::EmptyStackException() throw ()
+  : VMException("/!\\ Empty stack /!\\")
 {
 }
 
@@ -70,12 +69,8 @@ EmptyStackException::~EmptyStackException() throw ()
 {
 }
 
-const char	*EmptyStackException::what() const throw ()
-{
-  return "/!\\ Empty stack /!\\";
-}
-
 DivByZeroException::DivByZeroException() throw ()
+  : VMException("/!\\ Division by Zero /!\\")
 {
 }
 
@@ -83,12 +78,8 @@ DivByZeroException::~DivByZeroException() throw ()
 {
 }
 
-const char	*DivByZeroException::what() const throw ()
-{
-  return "/!\\ Division by Zero /!\\";
-}
-
 NoExitException::NoExitException() throw ()
+  : VMException("/!\\ No Exit at end of commands /!\\")
 {
 }
 
@@ -96,12 +87,8 @@ NoExitException::~NoExitException() throw ()
 {
 }
 
-const char	*NoExitException::what() const throw ()
-{
-  return "/!\\ No Exit at end of commands /!\\";
-}
-
 AssertException::AssertException() throw ()
+  : VMException("/!\\ Assertion failed /!\\")
 {
 }
 
@@ -109,12 +96,8 @@ AssertException::~AssertException() throw ()
 {
 }
 
-const char	*AssertException::what() const throw ()
-{
-  return "/!\\ Assertion failed /!\\";
-}
-
 StackOperandException::StackOperandException() throw ()
+  : VMException("/!\\ Not enough stack elements for operand/!\\")
 {
 }
 
@@ -122,12 +105,8 @@ StackOperandException::~StackOperandException() throw ()
 {
 }
 
-const char	*StackOperandException::what() const throw ()
-{
-  return "/!\\ Not enough stack elements for operand/!\\";
-}
-
 EmptyRegistryException::EmptyRegistryException() throw ()
+  : VMException("/!\\ Empty register slot /!\\")
 {
 }
 
@@ -135,20 +114,11 @@ EmptyRegistryException::~EmptyRegistryException() throw ()
 {
 }
 
-const char	*EmptyRegistryException::what() const throw ()
-{
-  return "/!\\ Empty register slot /!\\";
-}
-
 NotYetSupportedException::NotYetSupportedException() throw ()
+  : VMException("/!\\ Not Yet Supported /!\\")
 {
 }
 
 NotYetSupportedException::~NotYetSupportedException() throw ()
 {
-}
-
-const char	*NotYetSupportedException::what() const throw ()
-{
-  return "/!\\ Not Yet Supported /!\\";
 }

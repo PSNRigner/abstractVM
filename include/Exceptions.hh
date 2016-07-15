@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 09:25:19 2016 loic frasse-mathon
-// Last update Fri Jul 15 14:13:07 2016 loic frasse-mathon
+// Last update Fri Jul 15 14:42:07 2016 loic frasse-mathon
 //
 
 #ifndef EXCEPTIONS_HH_
@@ -14,92 +14,92 @@
 # include <exception>
 # include <string>
 
-class		SyntaxException : public std::exception
+class		VMException : public std::exception
+{
+private:
+  const char			*str;
+protected:
+  VMException(const char *) throw ();
+  virtual ~VMException() throw ();
+public:
+  virtual const char		*what() const throw ();
+};
+
+class		SyntaxException : public VMException
 {
 public:
   SyntaxException() throw ();
   virtual ~SyntaxException() throw ();
-  virtual const char		*what() const throw ();
 };
 
-class		UnknownInstructionException : public std::exception
+class		UnknownInstructionException : public VMException
 {
 public:
   UnknownInstructionException() throw ();
   virtual ~UnknownInstructionException() throw ();
-  virtual const char		*what() const throw ();
 };
 
-class		OverflowException : public std::exception
+class		OverflowException : public VMException
 {
 public:
   OverflowException() throw ();
-  virtual ~OverflowException() throw ();
-  virtual const char		*what() const throw ();
+  virtual ~OverflowException() throw ();;
 };
 
-class		UnderflowException : public std::exception
+class		UnderflowException : public VMException
 {
 public:
   UnderflowException() throw ();
   virtual ~UnderflowException() throw ();
-  virtual const char		*what() const throw ();
 };
 
-class		EmptyStackException : public std::exception
+class		EmptyStackException : public VMException
 {
 public:
   EmptyStackException() throw ();
   virtual ~EmptyStackException() throw ();
-  virtual const char		*what() const throw ();
 };
 
-class		DivByZeroException : public std::exception
+class		DivByZeroException : public VMException
 {
 public:
   DivByZeroException() throw ();
   virtual ~DivByZeroException() throw ();
-  virtual const char		*what() const throw ();
 };
 
-class		NoExitException : public std::exception
+class		NoExitException : public VMException
 {
 public:
   NoExitException() throw ();
   virtual ~NoExitException() throw ();
-  virtual const char		*what() const throw ();
 };
 
-class		AssertException : public std::exception
+class		AssertException : public VMException
 {
 public:
   AssertException() throw ();
   virtual ~AssertException() throw ();
-  virtual const char		*what() const throw ();
 };
 
-class		StackOperandException : public std::exception
+class		StackOperandException : public VMException
 {
 public:
   StackOperandException() throw ();
   virtual ~StackOperandException() throw ();
-  virtual const char		*what() const throw ();
 };
 
-class		EmptyRegistryException : public std::exception
+class		EmptyRegistryException : public VMException
 {
 public:
   EmptyRegistryException() throw ();
   virtual ~EmptyRegistryException() throw ();
-  virtual const char		*what() const throw ();
 };
 
-class		NotYetSupportedException : public std::exception
+class		NotYetSupportedException : public VMException
 {
 public:
   NotYetSupportedException() throw ();
   virtual ~NotYetSupportedException() throw ();
-  virtual const char		*what() const throw ();
 };
 
 #endif /* !EXCEPTIONS_HH_ */
