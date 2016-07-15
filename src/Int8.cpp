@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 10:51:03 2016 loic frasse-mathon
-// Last update Thu Jul 14 11:31:19 2016 loic frasse-mathon
+// Last update Fri Jul 15 11:11:25 2016 loic frasse-mathon
 //
 
 #include <cstdlib>
@@ -13,7 +13,7 @@
 #include "Int8.hh"
 #include "Exceptions.hh"
 
-AInt8::AInt8(const std::string &string)
+Int8::Int8(const std::string &string)
 {
   __int128	n = atol(string.c_str());
   if (n > 127)
@@ -23,11 +23,11 @@ AInt8::AInt8(const std::string &string)
   this->data = (char)n;
 }
 
-AInt8::~AInt8()
+Int8::~Int8()
 {
 }
 
-std::string		AInt8::toString() const
+std::string		Int8::toString() const
 {
   std::ostringstream	oss;
   std::string		tmp;
@@ -37,12 +37,12 @@ std::string		AInt8::toString() const
   return (tmp);
 }
 
-eOperandType	AInt8::getType() const
+eOperandType::eOperandType	Int8::getType() const
 {
-  return (Int8);
+  return (eOperandType::Int8);
 }
 
-IOperand	*AInt8::operator+(const IOperand &op) const
+IOperand	*Int8::operator+(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op + *this);
@@ -52,10 +52,10 @@ IOperand	*AInt8::operator+(const IOperand &op) const
 
   oss << value;
   tmp = oss.str();
-  return (new AInt8(tmp));
+  return (new Int8(tmp));
 }
 
-IOperand	*AInt8::operator-(const IOperand &op) const
+IOperand	*Int8::operator-(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op - *this);
@@ -65,10 +65,10 @@ IOperand	*AInt8::operator-(const IOperand &op) const
 
   oss << value;
   tmp = oss.str();
-  return (new AInt8(tmp));
+  return (new Int8(tmp));
 }
 
-IOperand	*AInt8::operator*(const IOperand &op) const
+IOperand	*Int8::operator*(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op * *this);
@@ -78,10 +78,10 @@ IOperand	*AInt8::operator*(const IOperand &op) const
 
   oss << value;
   tmp = oss.str();
-  return (new AInt8(tmp));
+  return (new Int8(tmp));
 }
 
-IOperand	*AInt8::operator/(const IOperand &op) const
+IOperand	*Int8::operator/(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op / *this);
@@ -91,10 +91,10 @@ IOperand	*AInt8::operator/(const IOperand &op) const
 
   oss << value;
   tmp = oss.str();
-  return (new AInt8(tmp));
+  return (new Int8(tmp));
 }
 
-IOperand	*AInt8::operator%(const IOperand &op) const
+IOperand	*Int8::operator%(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op % *this);
@@ -104,5 +104,5 @@ IOperand	*AInt8::operator%(const IOperand &op) const
 
   oss << value;
   tmp = oss.str();
-  return (new AInt8(tmp));
+  return (new Int8(tmp));
 }

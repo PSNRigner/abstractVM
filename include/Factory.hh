@@ -5,13 +5,15 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 09:08:37 2016 loic frasse-mathon
-// Last update Thu Jul 14 10:15:09 2016 loic frasse-mathon
+// Last update Fri Jul 15 11:17:58 2016 loic frasse-mathon
 //
 
 #ifndef FACTORY_HH_
 # define FACTORY_HH_
 
-enum		eOperandType
+namespace	eOperandType
+{
+  enum		eOperandType
   {
     Int8,
     Int16,
@@ -20,6 +22,7 @@ enum		eOperandType
     Double,
     BigDecimal
   };
+}
 
 # include <string>
 # include <vector>
@@ -28,7 +31,7 @@ enum		eOperandType
 class		Factory
 {
 public:
-  static IOperand	*createOperand(eOperandType, const std::string &);
+  static IOperand	*createOperand(eOperandType::eOperandType, const std::string &);
 private:
   Factory();
   ~Factory();

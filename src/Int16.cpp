@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 10:51:03 2016 loic frasse-mathon
-// Last update Thu Jul 14 11:31:11 2016 loic frasse-mathon
+// Last update Fri Jul 15 11:18:42 2016 loic frasse-mathon
 //
 
 #include <cstdlib>
@@ -13,7 +13,7 @@
 #include "Int16.hh"
 #include "Exceptions.hh"
 
-AInt16::AInt16(const std::string &string)
+Int16::Int16(const std::string &string)
 {
   __int128	n = atol(string.c_str());
   if (n > 32767)
@@ -23,11 +23,11 @@ AInt16::AInt16(const std::string &string)
   this->data = (short)n;
 }
 
-AInt16::~AInt16()
+Int16::~Int16()
 {
 }
 
-std::string		AInt16::toString() const
+std::string		Int16::toString() const
 {
   std::ostringstream	oss;
   std::string		tmp;
@@ -37,12 +37,12 @@ std::string		AInt16::toString() const
   return (tmp);
 }
 
-eOperandType	AInt16::getType() const
+eOperandType::eOperandType	Int16::getType() const
 {
-  return (Int16);
+  return (eOperandType::Int16);
 }
 
-IOperand	*AInt16::operator+(const IOperand &op) const
+IOperand	*Int16::operator+(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op + *this);
@@ -52,10 +52,10 @@ IOperand	*AInt16::operator+(const IOperand &op) const
 
   oss << value;
   tmp = oss.str();
-  return (new AInt16(tmp));
+  return (new Int16(tmp));
 }
 
-IOperand	*AInt16::operator-(const IOperand &op) const
+IOperand	*Int16::operator-(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op - *this);
@@ -65,10 +65,10 @@ IOperand	*AInt16::operator-(const IOperand &op) const
 
   oss << value;
   tmp = oss.str();
-  return (new AInt16(tmp));
+  return (new Int16(tmp));
 }
 
-IOperand	*AInt16::operator*(const IOperand &op) const
+IOperand	*Int16::operator*(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op * *this);
@@ -78,10 +78,10 @@ IOperand	*AInt16::operator*(const IOperand &op) const
 
   oss << value;
   tmp = oss.str();
-  return (new AInt16(tmp));
+  return (new Int16(tmp));
 }
 
-IOperand	*AInt16::operator/(const IOperand &op) const
+IOperand	*Int16::operator/(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op / *this);
@@ -91,10 +91,10 @@ IOperand	*AInt16::operator/(const IOperand &op) const
 
   oss << value;
   tmp = oss.str();
-  return (new AInt16(tmp));
+  return (new Int16(tmp));
 }
 
-IOperand	*AInt16::operator%(const IOperand &op) const
+IOperand	*Int16::operator%(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op % *this);
@@ -104,5 +104,5 @@ IOperand	*AInt16::operator%(const IOperand &op) const
 
   oss << value;
   tmp = oss.str();
-  return (new AInt16(tmp));
+  return (new Int16(tmp));
 }

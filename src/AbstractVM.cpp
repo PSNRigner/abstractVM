@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
-// Last update Fri Jul 15 11:04:52 2016 loic frasse-mathon
+// Last update Fri Jul 15 11:23:34 2016 loic frasse-mathon
 //
 
 #include <algorithm>
@@ -76,7 +76,7 @@ void	AbstractVM::push(const Cmd &o)
   while ((tmp != this->tab_str[t]) && (t < this->tab_str.size()))
     t++;
   if (t < this->tab_str.size())
-    this->stack.push_front(Factory::createOperand((eOperandType)t, o.getValue()));
+    this->stack.push_front(Factory::createOperand((eOperandType::eOperandType)t, o.getValue()));
   else
     throw new SyntaxException;
 }
@@ -108,14 +108,11 @@ void	AbstractVM::dump(const Cmd &o)
 void	AbstractVM::clear(const Cmd &o)
 {
   (void)o;
-  size_t	i = 0;
-
-  while (i != this->stack.size())
+  while (!this->stack.empty())
     {
       delete(this->stack.front());
-      i++;
+      this->stack.erase(this->stack.begin());
     }
-  this->stack.erase(this->stack.begin(), this->stack.end());
 }
 
 void	AbstractVM::dup(const Cmd &o)
@@ -246,15 +243,16 @@ void	AbstractVM::print(const Cmd &o)
   if (this->stack.size() < 1)
     throw new EmptyStackException;
   IOperand *tmp1 = stack.front();
-  if (tmp1->getType() != Int8)
+  if (tmp1->getType() != eOperandType::Int8)
     throw new AssertException;
-  tmp1->toString();
+  char c = (char)atoi(tmp1->toString().c_str());
+  std::cout << c << std::endl;
   (void)o;
 }
 
 void	AbstractVM::exit(const Cmd &o)
 {
-  //TODO FREE ALL
+  /* TODO FREE ALL */
   (void)o;
   ::exit(0);
 }

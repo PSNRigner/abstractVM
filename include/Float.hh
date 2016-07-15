@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 10:27:07 2016 loic frasse-mathon
-// Last update Thu Jul 14 10:44:57 2016 loic frasse-mathon
+// Last update Fri Jul 15 11:15:08 2016 loic frasse-mathon
 //
 
 #ifndef FLOAT_HH_
@@ -13,18 +13,18 @@
 
 # include "IOperand.hh"
 
-class		AFloat : public IOperand
+class		Float : public IOperand
 {
 public:
-  AFloat(const std::string &);
-  virtual ~AFloat();
-  virtual std::string	toString() const;
-  virtual eOperandType	getType() const;
-  virtual IOperand	*operator+(const IOperand &) const;
-  virtual IOperand	*operator-(const IOperand &) const;
-  virtual IOperand	*operator*(const IOperand &) const;
-  virtual IOperand	*operator/(const IOperand &) const;
-  virtual IOperand	*operator%(const IOperand &) const;
+  Float(const std::string &);
+  virtual ~Float();
+  virtual std::string			toString() const;
+  virtual eOperandType::eOperandType	getType() const;
+  virtual IOperand			*operator+(const IOperand &) const;
+  virtual IOperand			*operator-(const IOperand &) const;
+  virtual IOperand			*operator*(const IOperand &) const;
+  virtual IOperand			*operator/(const IOperand &) const;
+  virtual IOperand			*operator%(const IOperand &) const;
 
 private:
   float			data;

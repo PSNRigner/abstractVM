@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 10:27:07 2016 loic frasse-mathon
-// Last update Thu Jul 14 10:45:08 2016 loic frasse-mathon
+// Last update Fri Jul 15 11:16:12 2016 loic frasse-mathon
 //
 
 #ifndef INT16_HH_
@@ -13,18 +13,18 @@
 
 # include "IOperand.hh"
 
-class		AInt16 : public IOperand
+class		Int16 : public IOperand
 {
 public:
-  AInt16(const std::string &);
-  virtual ~AInt16();
-  virtual std::string	toString() const;
-  virtual eOperandType	getType() const;
-  virtual IOperand	*operator+(const IOperand &) const;
-  virtual IOperand	*operator-(const IOperand &) const;
-  virtual IOperand	*operator*(const IOperand &) const;
-  virtual IOperand	*operator/(const IOperand &) const;
-  virtual IOperand	*operator%(const IOperand &) const;
+  Int16(const std::string &);
+  virtual ~Int16();
+  virtual std::string			toString() const;
+  virtual eOperandType::eOperandType	getType() const;
+  virtual IOperand			*operator+(const IOperand &) const;
+  virtual IOperand			*operator-(const IOperand &) const;
+  virtual IOperand			*operator*(const IOperand &) const;
+  virtual IOperand			*operator/(const IOperand &) const;
+  virtual IOperand			*operator%(const IOperand &) const;
 
 private:
   short			data;
