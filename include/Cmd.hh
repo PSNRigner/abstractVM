@@ -5,7 +5,7 @@
 // Login   <velly_a@epitech.net>
 // 
 // Started on  14 Jul 14 10:18 AM 2016 adrien velly
-// Last update Thu Jul 14 15:15:01 2016 loic frasse-mathon
+// Last update Fri Jul 15 11:05:49 2016 adrien velly
 //
 
 #ifndef CMD
@@ -32,6 +32,7 @@ public:
   std::string	getInstruction(void) const;
   std::string	getType(void) const;
   std::string	getValue(void) const;
+  std::string	getV(void) const;
   void		setCommand(const std::string &value);
 };
 

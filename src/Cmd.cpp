@@ -5,7 +5,7 @@
 // Login   <velly_a@epitech.net>
 // 
 // Started on  14 Jul 14 10:28 AM 2016 adrien velly
-// Last update Thu Jul 14 15:17:13 2016 loic frasse-mathon
+// Last update Fri Jul 15 11:09:34 2016 adrien velly
 //
 
 #include "Cmd.hh"
@@ -33,6 +33,22 @@ std::string     Cmd::getCommand() const
   while (this->command[i] != ' ' && this->command[i] != 0)
     {
       tmp.push_back(this->command[i]);
+      i++;
+    }
+  return (tmp);
+}
+
+std::string     Cmd::getV() const
+{
+  int		i = 0;
+  std::string   tmp;
+
+  while (this->command[i] != ' ')
+    i++;
+  i++;
+  while (this->command[i] != 0)
+    {
+      tmp += this->command[i];
       i++;
     }
   return (tmp);
