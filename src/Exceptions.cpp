@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 11:08:58 2016 loic frasse-mathon
-// Last update Thu Jul 14 11:18:27 2016 loic frasse-mathon
+// Last update Fri Jul 15 10:19:54 2016 loic frasse-mathon
 //
 
 #include "Exceptions.hh"
@@ -125,4 +125,17 @@ StackOperandException::~StackOperandException() throw ()
 const char	*StackOperandException::what() const throw ()
 {
   return "/!\\ Not enough stack elements for operand/!\\";
+}
+
+EmptyRegisterException::EmptyRegisterException() throw ()
+{
+}
+
+EmptyRegisterException::~EmptyRegisterException() throw ()
+{
+}
+
+const char	*EmptyRegisterException::what() const throw ()
+{
+  return "/!\\ Empty register slot /!\\";
 }
