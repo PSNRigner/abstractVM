@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 09:25:19 2016 loic frasse-mathon
-// Last update Fri Jul 15 11:26:33 2016 loic frasse-mathon
+// Last update Fri Jul 15 14:13:07 2016 loic frasse-mathon
 //
 
 #ifndef EXCEPTIONS_HH_
@@ -91,6 +91,14 @@ class		EmptyRegistryException : public std::exception
 public:
   EmptyRegistryException() throw ();
   virtual ~EmptyRegistryException() throw ();
+  virtual const char		*what() const throw ();
+};
+
+class		NotYetSupportedException : public std::exception
+{
+public:
+  NotYetSupportedException() throw ();
+  virtual ~NotYetSupportedException() throw ();
   virtual const char		*what() const throw ();
 };
 
