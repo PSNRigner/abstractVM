@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
-// Last update Fri Jul 15 10:20:26 2016 Clément LECOMTE
+// Last update Fri Jul 15 10:24:33 2016 Clément LECOMTE
 //
 
 #include <algorithm>
@@ -118,6 +118,10 @@ void	AbstractVM::clear(const Cmd &o)
 void	AbstractVM::dup(const Cmd &o)
 {
   (void)o;
+  if (this->stack.size() != 0)
+    this->stack.push_front(Factory::createOperand(this->stack.front()->getType(), this->stack.front()->toString()));
+  else
+    throw new EmptyStackException;
 }
 
 void	AbstractVM::swap(const Cmd &o)
