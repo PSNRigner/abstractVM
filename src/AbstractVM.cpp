@@ -6,10 +6,14 @@
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
 <<<<<<< HEAD
+<<<<<<< HEAD
 // Last update Fri Jul 15 10:02:29 2016 adrien velly
 =======
 // Last update Fri Jul 15 09:53:06 2016 Clément LECOMTE
 >>>>>>> refs/remotes/origin/master
+=======
+// Last update Fri Jul 15 10:05:31 2016 Clément LECOMTE
+>>>>>>> 749d867319e49e872df714a47f37bc1f0f1ff933
 //
 
 #include <algorithm>
@@ -152,26 +156,79 @@ void	AbstractVM::add(const Cmd &command)
 {
   if (this->stack.size() < 2)
     throw new EmptyStackException;
+  IOperand *tmp1 = stack.front();
+  stack.pop_front();
+  IOperand *tmp2 = stack.front();
+  stack.pop_front();
+  IOperand *tmp3;
+  tmp3 = *tmp1 + *tmp2;
+  stack.push_front(tmp3);
+  delete tmp1;
+  delete tmp2;
   (void)command;
 }
 
 void	AbstractVM::sub(const Cmd &o)
 {
+  if (this->stack.size() < 2)
+    throw new EmptyStackException;
+  IOperand *tmp1 = stack.front();
+  stack.pop_front();
+  IOperand *tmp2 = stack.front();
+  stack.pop_front();
+  IOperand *tmp3;
+  tmp3 = *tmp2 - *tmp1;
+  stack.push_front(tmp3);
+  delete tmp1;
+  delete tmp2;
   (void)o;
 }
 
 void	AbstractVM::mul(const Cmd &o)
 {
+  if (this->stack.size() < 2)
+    throw new EmptyStackException;
+  IOperand *tmp1 = stack.front();
+  stack.pop_front();
+  IOperand *tmp2 = stack.front();
+  stack.pop_front();
+  IOperand *tmp3;
+  tmp3 = *tmp2 * *tmp1;
+  stack.push_front(tmp3);
+  delete tmp1;
+  delete tmp2;
   (void)o;
 }
 
 void	AbstractVM::div(const Cmd &o)
 {
+ if (this->stack.size() < 2)
+    throw new EmptyStackException;
+  IOperand *tmp1 = stack.front();
+  stack.pop_front();
+  IOperand *tmp2 = stack.front();
+  stack.pop_front();
+  IOperand *tmp3;
+  tmp3 = *tmp2 / *tmp1;
+  stack.push_front(tmp3);
+  delete tmp1;
+  delete tmp2;
   (void)o;
 }
 
 void	AbstractVM::mod(const Cmd &o)
 {
+ if (this->stack.size() < 2)
+    throw new EmptyStackException;
+  IOperand *tmp1 = stack.front();
+  stack.pop_front();
+  IOperand *tmp2 = stack.front();
+  stack.pop_front();
+  IOperand *tmp3;
+  tmp3 = *tmp2 % *tmp1;
+  stack.push_front(tmp3);
+  delete tmp1;
+  delete tmp2;
   (void)o;
 }
 
