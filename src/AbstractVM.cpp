@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
-// Last update Fri Jul 15 11:30:52 2016 adrien velly
+// Last update Fri Jul 15 11:37:10 2016 adrien velly
 // Last update Fri Jul 15 09:53:06 2016 Clément LECOMTE
 // Last update Fri Jul 15 10:05:31 2016 Clément LECOMTE
 // Last update Fri Jul 15 11:04:52 2016 loic frasse-mathon
@@ -54,6 +54,13 @@ AbstractVM::AbstractVM()
 
 AbstractVM::~AbstractVM()
 {
+  this->tab_str.erase(this->tab_str.begin(), this->tab_str.end());
+  while (!this->stack.empty())
+    {
+      delete(this->stack.front());
+      this->stack.erase(this->stack.begin());
+    }
+  
 }
 
 void	AbstractVM::registerInstructions()
