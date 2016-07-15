@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 09:05:15 2016 loic frasse-mathon
-// Last update Thu Jul 14 09:57:30 2016 loic frasse-mathon
+// Last update Fri Jul 15 09:50:25 2016 Clément LECOMTE
 //
 
 #ifndef IOPERAND_HH_
