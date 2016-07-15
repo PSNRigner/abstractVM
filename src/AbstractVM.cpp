@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
-// Last update Thu Jul 14 23:14:01 2016 loic frasse-mathon
+// Last update Fri Jul 15 09:41:03 2016 adrien velly
 //
 
 #include <algorithm>
@@ -84,6 +84,10 @@ void	AbstractVM::push(const Cmd &o)
 void	AbstractVM::pop(const Cmd &o)
 {
   (void)o;
+  if (this->stack.size() == 0)
+    throw new EmptyStackException;
+  else
+    this->stack.erase(this->stack.begin());
 }
 
 void	AbstractVM::dump(const Cmd &o)
@@ -101,6 +105,14 @@ void	AbstractVM::dump(const Cmd &o)
 void	AbstractVM::clear(const Cmd &o)
 {
   (void)o;
+  size_t	i = 0;
+
+  while (i != this->stack.size())
+    {
+      delete(this->stack.front());
+      i++;
+    }
+  this->stack.erase(this->stack.begin(), this->stack.end());
 }
 
 void	AbstractVM::dup(const Cmd &o)
