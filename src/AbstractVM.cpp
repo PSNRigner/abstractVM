@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
-// Last update Sat Jul 16 10:48:13 2016 adrien velly
+// Last update Sat Jul 16 18:29:18 2016 loic frasse-mathon
 //
 
 #include <algorithm>
@@ -296,7 +296,7 @@ void	AbstractVM::store(const Cmd &o)
     throw new SyntaxException;
   if (this->registry[i] != NULL)
     delete this->registry[i];
-  this->registry[i] = this->stack.front();
+  this->registry[i] = Factory::createOperand(this->stack.front()->getType(), this->stack.front()->toString());
 }
 
 void	AbstractVM::print(const Cmd &o)
