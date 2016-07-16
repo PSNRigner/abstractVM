@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 11:32:42 2016 loic frasse-mathon
-// Last update Sat Jul 16 17:35:22 2016 loic frasse-mathon
+// Last update Sat Jul 16 17:55:36 2016 loic frasse-mathon
 //
 
 #include <iostream>
@@ -39,9 +39,16 @@ static void	bdAdd(std::string &str1, std::string &str2, std::string &result)
       str1 = str1.substr(1, str1.size() - 1);
       str2 = str2.substr(1, str2.size() - 1);
     }
-  else if ((neg[0] && !neg[1]) || (neg[1] && !neg[0]))
+  else if (neg[0] && !neg[1])
     {
-      /* TODO Call sub */
+      str1 = str1.substr(1, str1.size() - 1);
+      bdSub(str2, str1, result);
+      return ;
+    }
+  else if (neg[1] && !neg[0])
+    {
+      str2 = str2.substr(1, str2.size() - 1);
+      bdSub(str1, str2, result);
       return ;
     }
   i = 0;
