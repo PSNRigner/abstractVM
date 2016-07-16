@@ -5,7 +5,7 @@
 // Login   <velly_a@epitech.net>
 // 
 // Started on  14 Jul 14 10:28 AM 2016 adrien velly
-// Last update Sat Jul 16 10:10:52 2016 adrien velly
+// Last update Sat Jul 16 10:48:59 2016 adrien velly
 //
 
 #include "Cmd.hh"
@@ -31,15 +31,18 @@ void		Cmd::verif_cmd(void) const
   int		i = 0;
   int		count = 0;
 
+  if (this->command.find(";", 0) != std::string::npos)
+    return ;
   if (this->command.find("\t", 0) != std::string::npos)
     throw new SyntaxException;
   while (this->command[i] != 0)
     {
       if (this->command[i] == ' ')
 	count++;
+      i++;
     }
   if (count > 1)
-    throw new SyntaxException;
+  throw new SyntaxException;
 }
 
 std::string     Cmd::getCommand() const
