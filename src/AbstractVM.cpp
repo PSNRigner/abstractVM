@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
-// Last update Sat Jul 16 00:37:29 2016 loic frasse-mathon
+// Last update Sat Jul 16 10:48:13 2016 adrien velly
 //
 
 #include <algorithm>
@@ -168,7 +168,7 @@ void	AbstractVM::assert(const Cmd &o)
 {
   size_t	t;
   std::string	tmp;
-  if (this->stack.size() < 2)
+  if (this->stack.size() < 1)
     throw new EmptyStackException; 
   IOperand *tmp1 = stack.front();
   IOperand *tmp2;
