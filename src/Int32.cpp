@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 10:51:03 2016 loic frasse-mathon
-// Last update Fri Jul 15 13:54:18 2016 loic frasse-mathon
+// Last update Sun Jul 17 13:38:38 2016 loic frasse-mathon
 //
 
 #include <cstdlib>
@@ -59,7 +59,7 @@ IOperand	*Int32::operator-(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op - *this);
-  long	value = (int)atoi(op.toString().c_str()) - this->data;
+  long	value = this->data - (int)atoi(op.toString().c_str());
   std::ostringstream	oss;
   std::string		tmp;
 
@@ -85,7 +85,7 @@ IOperand	*Int32::operator/(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op / *this);
-  long	value = (int)atoi(op.toString().c_str()) / this->data;
+  long	value = this->data / (int)atoi(op.toString().c_str());
   std::ostringstream	oss;
   std::string		tmp;
 
@@ -98,7 +98,7 @@ IOperand	*Int32::operator%(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op % *this);
-  long	value = (int)atoi(op.toString().c_str()) % this->data;
+  long	value = this->data % (int)atoi(op.toString().c_str());
   std::ostringstream	oss;
   std::string		tmp;
 
