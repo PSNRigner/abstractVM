@@ -1,2 +1,4 @@
 *.o
 abstractVM
+tests
+check.sh
