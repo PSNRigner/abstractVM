@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 11:32:42 2016 loic frasse-mathon
-// Last update Sat Jul 16 17:55:36 2016 loic frasse-mathon
+// Last update Mon Jul 18 14:47:38 2016 loic frasse-mathon
 //
 
 #include <iostream>
@@ -153,7 +153,7 @@ static void	bdSub(std::string &str1, std::string &str2, std::string &result)
       std::reverse(result.begin(), result.end());
       return ;
     }
-  if (!isGreater(str1, str2))
+  if (isGreater(str2, str1))
     {
       std::string	tmp;
       std::string	tmp2 = "-1";
@@ -277,7 +277,80 @@ static void			bdMul(std::string &str1, std::string &str2, std::string &result)
     }
   if ((neg[0] && !neg[1]) || (neg[1] && !neg[0]))
     result = std::string("-") + result;
+  while (result.size() > 1 && result[0] == '0' && result[1] != '.')
+    result.erase(result.begin());
 }
+
+/*static void		bdDiv(std::string &str1, std::string &str2, std::string &result)
+{
+  size_t	virg[2];
+  bool		neg[2];
+  size_t	i;
+  size_t	j;
+  std::string	tmp;
+  std::string	plaige;
+  std::string	plaige2;
+  bool		k;
+
+  plaige = str1;
+  plaige2 = str2;
+  neg[0] = str1[0] == '-';
+  neg[1] = str2[0] == '-';
+  if (neg[0])
+    str1 = str1.substr(1, str1.size() - 1);
+  if (neg[1])
+    str2 = str2.substr(1, str2.size() - 1);
+  virg[0] = str1.find('.');
+  virg[1] = str2.find('.');
+  str1.erase(std::remove(str1.begin(), str1.end(), '.'), str1.end());
+  str2.erase(std::remove(str2.begin(), str2.end(), '.'), str2.end());
+  i = 0;
+  k = true;
+  while (i < str2.size() - 1 && i < str1.size() - 1)
+    {
+      tmp.push_back(str1[i]);
+      i++;
+    }
+  do
+    {
+      tmp.push_back(i < str1.size() ? str1[i] : '0');
+      j = 0;
+      while (j < 10)
+	{
+	  std::string	tmp2;
+	  tmp2.push_back(j + '0');
+	  std::string	tmp3;
+	  bdMul(str2, tmp2, tmp3);
+	  if (isGreater(tmp3, tmp))
+	    break ;
+	  j++;
+	}
+      j--;
+      std::string	tmp2;
+      tmp2.push_back(j + '0');
+      std::string	tmp3;
+      bdMul(str2, tmp2, tmp3);
+      tmp2.clear();
+      bdSub(tmp, tmp3, tmp2);
+      tmp = tmp2;
+      tmp2.clear();
+      bdSub(plaige, tmp3, tmp2);
+      plaige = tmp2;
+      result.push_back('0' + j);
+      if (k && isGreater(plaige2, plaige))
+	{
+	  result.push_back('.');
+	  k = false;
+	}
+      i++;
+    }
+  while (tmp != "0");
+  (void)virg;
+  while (result.size() > 1 && result[0] == '0' && result[1] != '.')
+    result.erase(result.begin());
+  if (result.size() > 0 && result.back() == '.')
+    result.pop_back();
+    }*/
 
 IOperand	*BigDecimal::operator+(const IOperand &op) const
 {

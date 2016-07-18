@@ -5,7 +5,7 @@
 ## Login   <frasse_l@epitech.net>
 ## 
 ## Started on  Thu Jul 14 09:00:22 2016 loic frasse-mathon
-## Last update Fri Jul 15 16:33:07 2016 loic frasse-mathon
+## Last update Mon Jul 18 14:43:11 2016 loic frasse-mathon
 ##
 
 SRC		= src/main.cpp \
@@ -27,7 +27,7 @@ NAME		= abstractVM
 
 CXX		= g++ -g
 
-CXXFLAGS	= -W -Wall -Werror -Wextra -I./include
+CXXFLAGS	= -W -Wall -Werror -Wextra -I./include -std=c++11
 
 RM		= rm -f
 
