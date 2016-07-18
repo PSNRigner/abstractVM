@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
-// Last update Sat Jul 16 18:29:18 2016 loic frasse-mathon
+// Last update Mon Jul 18 09:14:04 2016 loic frasse-mathon
 //
 
 #include <algorithm>
@@ -297,6 +297,7 @@ void	AbstractVM::store(const Cmd &o)
   if (this->registry[i] != NULL)
     delete this->registry[i];
   this->registry[i] = Factory::createOperand(this->stack.front()->getType(), this->stack.front()->toString());
+  this->stack.pop_front();
 }
 
 void	AbstractVM::print(const Cmd &o)
