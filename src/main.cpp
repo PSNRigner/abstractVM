@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 15:08:44 2016 loic frasse-mathon
-// Last update Fri Jul 15 19:55:45 2016 loic frasse-mathon
+// Last update Mon Jul 18 11:11:20 2016 loic frasse-mathon
 //
 
 #include "AbstractVM.hh"
@@ -21,13 +21,11 @@ int				usage(char **av)
   return (84);
 }
 
-void				parse(AbstractVM &vm)
+void				parse(AbstractVM &vm, size_t &i)
 {
   Parsing			pars;
   std::vector<Cmd>		list;
-  size_t			i;
 
-  i = 0;
   list = pars.getList_obj();
   while (i != list.size())
     {
@@ -37,13 +35,11 @@ void				parse(AbstractVM &vm)
   throw new NoExitException;
 }
 
-void				parseFile(AbstractVM &vm, const std::string &path)
+void				parseFile(AbstractVM &vm, const std::string &path, size_t &i)
 {
   Parsing			pars(path);
   std::vector<Cmd>		list;
-  size_t			i;
 
-  i = 0;
   list = pars.getList_obj();
   while (i != list.size())
     {
@@ -56,19 +52,21 @@ void				parseFile(AbstractVM &vm, const std::string &path)
 int				main(int ac, char **av)
 {
   AbstractVM			vm;
+  size_t			i;
 
   try
     {
+      i = 0;
       if (ac == 1)
-	parse(vm);
+	parse(vm, i);
       else if (ac > 2 || std::string(av[1]) == "-h")
 	return (usage(av));
       else
-	parseFile(vm, av[1]);
+	parseFile(vm, av[1], i);
     }
   catch (VMException *ex)
     {
-      std::cerr << ex->what() << std::endl;
+      std::cerr << "Line " << i + 1 << " : " << ex->what() << std::endl;
       return (84);
     }
   return (0);
