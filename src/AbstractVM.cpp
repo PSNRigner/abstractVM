@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
-// Last update Mon Jul 18 11:27:49 2016 loic frasse-mathon
+// Last update Mon Jul 18 17:25:30 2016 loic frasse-mathon
 //
 
 #include <algorithm>
@@ -314,7 +314,6 @@ void	AbstractVM::print(const Cmd &o)
 
 void	AbstractVM::exit(const Cmd &o)
 {
-  /* TODO FREE ALL */
   (void)o;
   ::exit(0);
 }
