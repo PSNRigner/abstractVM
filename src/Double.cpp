@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 10:51:03 2016 loic frasse-mathon
-// Last update Fri Jul 15 13:55:47 2016 loic frasse-mathon
+// Last update Sun Jul 17 13:36:10 2016 loic frasse-mathon
 //
 
 #include <cstdlib>
@@ -61,7 +61,7 @@ IOperand	*Double::operator-(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op - *this);
-  double	value = (double)atof(op.toString().c_str()) - this->data;
+  double	value = this->data - (double)atof(op.toString().c_str());
   std::ostringstream	oss;
   std::string		tmp;
 
@@ -87,7 +87,7 @@ IOperand	*Double::operator/(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op / *this);
-  double	value = (double)atof(op.toString().c_str()) / this->data;
+  double	value = this->data / (double)atof(op.toString().c_str());
   std::ostringstream	oss;
   std::string		tmp;
 
@@ -100,7 +100,7 @@ IOperand	*Double::operator%(const IOperand &op) const
 {
   if (op.getType() > this->getType())
     return (op % *this);
-  double	value = fmod(atof(op.toString().c_str()), this->data);
+  double	value = fmod(this->data, atof(op.toString().c_str()));
   std::ostringstream	oss;
   std::string		tmp;
 
