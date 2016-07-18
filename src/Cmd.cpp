@@ -5,7 +5,7 @@
 // Login   <velly_a@epitech.net>
 // 
 // Started on  14 Jul 14 10:28 AM 2016 adrien velly
-// Last update Mon Jul 18 10:26:35 2016 adrien velly
+// Last update Mon Jul 18 11:16:06 2016 adrien velly
 //
 
 #include "Cmd.hh"
@@ -28,21 +28,8 @@ Cmd::~Cmd()
 
 void		Cmd::verif_cmd(void) const
 {
-  /*int		i = 0;
-    int		count = 0;*/
-
   if (this->command.find(";", 0) != std::string::npos)
     return ;
-  //if (this->command.find("\t", 0) != std::string::npos)
-  //throw new SyntaxException;
-  /*while (this->command[i] != 0)
-    {
-      if (this->command[i] == ' ')
-	count++;
-      i++;
-    }
-  if (count > 1)
-  throw new SyntaxException;*/
 }
 
 std::string     Cmd::getCommand() const
@@ -68,6 +55,7 @@ std::string     Cmd::getV() const
   while (this->command[i] != ' ' && this->command[i] != '\t')
     i++;
   while (this->command[i] == ' ' || this->command[i] == '\t')
+    i++;
   while (this->command[i] != 0)
     {
       tmp += this->command[i];
@@ -82,7 +70,7 @@ std::string	Cmd::getValue() const
   std::string	tmp;
 
   verif_cmd();
-  if (this->command.find('(', 0) != std::string::npos)
+  if (this->command.find("(", 0) != std::string::npos)
     {
       while (this->command[i] != '(')
 	i++;
@@ -103,7 +91,7 @@ std::string	Cmd::getType() const
   std::string	tmp;
 
   verif_cmd();
-  while (this->command[i] != ' ')
+  while (this->command[i] != ' ' && this->command[i] != '\t')
     i++;
   while (this->command[i] == ' ' || this->command[i] == '\t')
     i++;
