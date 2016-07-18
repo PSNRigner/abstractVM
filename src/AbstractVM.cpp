@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
-// Last update Mon Jul 18 11:12:57 2016 loic frasse-mathon
+// Last update Mon Jul 18 11:19:29 2016 loic frasse-mathon
 //
 
 #include <algorithm>
@@ -308,7 +308,7 @@ void	AbstractVM::print(const Cmd &o)
   if (tmp1->getType() != eOperandType::Int8)
     throw new AssertException;
   char c = (char)atoi(tmp1->toString().c_str());
-  std::cout << c << std::endl;
+  std::cout << c;
   (void)o;
 }
 
