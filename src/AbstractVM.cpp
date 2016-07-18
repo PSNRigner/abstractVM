@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
-// Last update Sat Jul 16 10:48:13 2016 adrien velly
+// Last update Sat Jul 16 10:59:23 2016 adrien velly
 //
 
 #include <algorithm>
@@ -318,7 +318,7 @@ void	AbstractVM::exit(const Cmd &o)
   ::exit(0);
 }
 
-void	AbstractVM::performCommand(const Cmd &o)
+void		AbstractVM::performCommand(const Cmd &o)
 {
   size_t	t;
   std::string	tmp;

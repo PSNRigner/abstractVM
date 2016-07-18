@@ -5,7 +5,7 @@
 // Login   <velly_a@epitech.net>
 // 
 // Started on  14 Jul 14 10:28 AM 2016 adrien velly
-// Last update Sat Jul 16 10:48:59 2016 adrien velly
+// Last update Mon Jul 18 10:26:35 2016 adrien velly
 //
 
 #include "Cmd.hh"
@@ -28,21 +28,21 @@ Cmd::~Cmd()
 
 void		Cmd::verif_cmd(void) const
 {
-  int		i = 0;
-  int		count = 0;
+  /*int		i = 0;
+    int		count = 0;*/
 
   if (this->command.find(";", 0) != std::string::npos)
     return ;
-  if (this->command.find("\t", 0) != std::string::npos)
-    throw new SyntaxException;
-  while (this->command[i] != 0)
+  //if (this->command.find("\t", 0) != std::string::npos)
+  //throw new SyntaxException;
+  /*while (this->command[i] != 0)
     {
       if (this->command[i] == ' ')
 	count++;
       i++;
     }
   if (count > 1)
-  throw new SyntaxException;
+  throw new SyntaxException;*/
 }
 
 std::string     Cmd::getCommand() const
@@ -51,7 +51,7 @@ std::string     Cmd::getCommand() const
   std::string	tmp;
 
   verif_cmd();
-  while (this->command[i] != ' ' && this->command[i] != 0)
+  while ((this->command[i] != ' ' && this->command[i] != '\t') && this->command[i] != 0)
     {
       tmp.push_back(this->command[i]);
       i++;
@@ -65,9 +65,9 @@ std::string     Cmd::getV() const
   std::string   tmp;
 
   verif_cmd();
-  while (this->command[i] != ' ')
+  while (this->command[i] != ' ' && this->command[i] != '\t')
     i++;
-  i++;
+  while (this->command[i] == ' ' || this->command[i] == '\t')
   while (this->command[i] != 0)
     {
       tmp += this->command[i];
@@ -82,11 +82,8 @@ std::string	Cmd::getValue() const
   std::string	tmp;
 
   verif_cmd();
-  if (this->command.find("(", 0) != std::string::npos)
+  if (this->command.find('(', 0) != std::string::npos)
     {
-      while (this->command[i] != ' ')
-	i++;
-      i++;
       while (this->command[i] != '(')
 	i++;
       i++;
@@ -108,8 +105,9 @@ std::string	Cmd::getType() const
   verif_cmd();
   while (this->command[i] != ' ')
     i++;
-  i++;
-  while (this->command[i] != '(')
+  while (this->command[i] == ' ' || this->command[i] == '\t')
+    i++;
+  while (this->command[i] != '(' && this->command[i] != ' ' && this->command[i] != '\t')
     {
       tmp += this->command[i];
       i++;
