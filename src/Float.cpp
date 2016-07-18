@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 10:51:03 2016 loic frasse-mathon
-// Last update Sun Jul 17 13:36:47 2016 loic frasse-mathon
+// Last update Mon Jul 18 15:01:12 2016 loic frasse-mathon
 //
 
 #include <cstdlib>
@@ -17,6 +17,8 @@
 
 Float::Float(const std::string &string)
 {
+  if (!checkFloat(string))
+    throw new SyntaxException;
   __float128	n = atof(string.c_str());
   if (n > FLT_MAX)
     throw new OverflowException;

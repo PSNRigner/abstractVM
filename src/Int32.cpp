@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 10:51:03 2016 loic frasse-mathon
-// Last update Sun Jul 17 13:38:38 2016 loic frasse-mathon
+// Last update Mon Jul 18 15:01:00 2016 loic frasse-mathon
 //
 
 #include <cstdlib>
@@ -15,6 +15,8 @@
 
 Int32::Int32(const std::string &string)
 {
+  if (!checkInt(string))
+    throw new SyntaxException;
   __int128	n = atol(string.c_str());
   if (n > 2147483647)
     throw new OverflowException;

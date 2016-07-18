@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 11:32:42 2016 loic frasse-mathon
-// Last update Mon Jul 18 14:47:38 2016 loic frasse-mathon
+// Last update Mon Jul 18 15:01:47 2016 loic frasse-mathon
 //
 
 #include <iostream>
@@ -15,6 +15,8 @@
 
 BigDecimal::BigDecimal(const std::string &value)
 {
+  if (!checkFloat(value))
+    throw new SyntaxException;
   this->data = value;
 }
 

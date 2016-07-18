@@ -5,7 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 09:39:45 2016 loic frasse-mathon
-// Last update Fri Jul 15 13:45:43 2016 loic frasse-mathon
+// Last update Mon Jul 18 14:59:17 2016 loic frasse-mathon
 //
 
 #ifndef ABSTRACTVM_HH_
@@ -68,5 +68,8 @@ private:
   IOperand			*registry[REG_SIZE];
   std::vector<std::string>	tab_str;
 };
+
+bool            checkFloat(const std::string &o);
+bool            checkInt(const std::string &o);
 
 #endif /* !ABSTRACTVM_HH_ */

@@ -5,7 +5,7 @@
 ## Login   <frasse_l@epitech.net>
 ## 
 ## Started on  Thu Jul 14 09:00:22 2016 loic frasse-mathon
-## Last update Mon Jul 18 14:56:30 2016 Clément LECOMTE
+## Last update Mon Jul 18 15:02:03 2016 loic frasse-mathon
 ##
 
 SRC		= src/main.cpp \
@@ -20,7 +20,7 @@ SRC		= src/main.cpp \
 		src/AbstractVM.cpp \
 		src/Parsing.cpp \
 		src/Cmd.cpp \
-		srs/Utils.cpp
+		src/Utils.cpp
 
 OBJ		= $(SRC:.cpp=.o)
 
