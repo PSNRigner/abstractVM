@@ -5,11 +5,7 @@
 // Login   <frasse_l@epitech.net>
 // 
 // Started on  Thu Jul 14 14:26:56 2016 loic frasse-mathon
-<<<<<<< HEAD
-// Last update Sat Jul 16 10:59:23 2016 adrien velly
-=======
-// Last update Mon Jul 18 09:14:04 2016 loic frasse-mathon
->>>>>>> refs/remotes/origin/master
+// Last update Mon Jul 18 11:12:57 2016 loic frasse-mathon
 //
 
 #include <algorithm>
